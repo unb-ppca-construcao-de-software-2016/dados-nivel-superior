@@ -11,13 +11,20 @@ Repositório para artefatos do segundo trabalho da disciplina Construção de So
 - [Rodrigo Vilela](https://github.com/rodrigovilela)
 
 ## Público alvo
-Egressos do Ensino Médio e Superior em busca de continuidade da formacao acadêmica e profissional.
+População que esteja em busca de um curso de graduação. Exemplo: egressos do Ensino Médio.
 
 ## Problema a resolver
-Dificuldades de localizar informações relevantes relacionadas as instituições, incluindo localidade, distribuidas de forma esparsa na internet.
+Dificuldades que aqueles que pretendem ingressar em um curso de graduação encontram ao tentar localizar informações relevantes referentes aos cursos, tais como: instituições  de ensino superior (IES) ofertantes do curso desejado, número de vagas ofertadas e concorrência apresentada nas instituições, estados e regiões geográficas.
+Essas informações não são oferecidas de forma centralizada e amigável por nenhum software.
 
-## Provavel Solução
-Uma interface amigável que permita ao cliente buscar as informações disponíveis nos microdados do [INEP](http://portal.inep.gov.br/basica-levantamentos-microdados). Um app de tratamento e apresentação desses dados.
+## Provável Solução
+-Uma interface que permita ao cliente visualizar informações sobre os cursos de graduação. A proposta consiste em um software que apresente os microdados do INEP, disponíveis em [INEP](http://portal.inep.gov.br/basica-levantamentos-microdados), de forma amigável.
+As informações a seguir serão disponibilizadas:
+- Quais cursos são ofertados por cada IES, estado e região geográfica;
+- Quantas vagas foram ofertadas nas IES, estados e regiões geográficas em cada curso nos útimos anos;
+- Qual a relação candidatos/vagas em cursos nas IES, estados e regiões geográficas (considerando-se diferentes formas de ingresso como vestibular e ENEM/SISU) nos últimos anos;
+- Quais foram as taxas de desistência em cursos nas IES, estados e regiões geográficas nos últimos anos.
+- Qual o conceito do curso, segundo o ENADE, em cada IES. 
 
 ## Plano de Entregas (Em definição)
 * **24/06/16** - Wireframe e lista de funcionalidades esperadas.
