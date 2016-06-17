@@ -10,13 +10,13 @@ Repositório para artefatos do segundo trabalho da disciplina Construção de So
 - [Rodolfo Cruz](https://github.com/rodolfocruzbsb)
 - [Rodrigo Vilela](https://github.com/rodrigovilela)
 
-## Publico alvo
+## Público alvo
 Egressos do Ensino Médio e Superior em busca de continuidade da formacao acadêmica e profissional.
 
 ## Problema a resolver
 Dificuldades de localizar informações relevantes relacionadas as instituições, incluindo localidade, distribuidas de forma esparsa na internet.
 
-## Provavel Solucao
+## Provavel Solução
 Uma interface amigável que permita ao cliente buscar as informações disponíveis nos microdados do [INEP](http://portal.inep.gov.br/basica-levantamentos-microdados). Um app de tratamento e apresentação desses dados.
 
 ## Plano de Entregas (Em definição)
