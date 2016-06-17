@@ -23,3 +23,6 @@ Uma interface amigável que permita ao cliente buscar as informações disponív
 * **24/06/16** - Wireframe e lista de funcionalidades esperadas.
 * **01/07/16** - Primeira versão funcional com conjunto mínimo de funcionalidades
 * **08/07/16** - Versão Final do serviço com todas as funcionalidades importantes
+
+## Ferramentas de apoio
+* [Trello](https://trello.com/b/HqxCn7sP/projeto2-ppca-unb)
