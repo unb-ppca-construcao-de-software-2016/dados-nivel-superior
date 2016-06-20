@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
@@ -57,11 +57,90 @@
       #target {
         width: 345px;
       }
+      
+      #right-panel {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+
+      #right-panel select {
+        width: 100%;
+      }
+
+      #right-panel i {
+        font-size: 12px;
+      }
+      #right-panel {
+        font-family: Arial, Helvetica, sans-serif;
+        position: absolute;
+        right: 5px;
+        top: 60%;
+        margin-top: -195px;
+        height: 330px;
+        width: 200px;
+        padding: 5px;
+        z-index: 5;
+        border: 1px solid #999;
+        background: #fff;
+      }
+      #right-panel h2 {
+        font-size: 22px;
+        margin: 0 0 5px 0;
+      }
+      #right-panel ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        height: 271px;
+        width: 200px;
+        overflow-y: scroll;
+      }
+      #right-panel li {
+        background-color: #f1f1f1;
+        padding: 10px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      #right-panel li:nth-child(odd) {
+        background-color: #fcfcfc;
+      }
+      #more {
+        width: 100%;
+        margin: 5px 0 0 0;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      li {
+        background-color: #f1f1f1;
+        padding: 10px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      li:nth-child(odd) {
+        background-color: #fcfcfc;
+      }
     </style>
   </head>
   <body>
     <input id="pac-input" class="controls" type="text" placeholder="Procure seu curso aqui!">
     <div id="map"></div>
+    <div id="right-panel">
+      <h2>Resultados</h2>
+      <ul id="places"></ul>
+      <button id="more">Mais resultados</button>
+    </div>
+
     <script>
       // This example adds a search box to a map, using the Google Place Autocomplete
       // feature. People can enter geographical searches. The search box will return a
@@ -74,12 +153,14 @@
       function initAutocomplete() {
 
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -15.7801, lng: -47.9292},
-          zoom: 4,
+          center: {lat: -15.7633, lng: -47.8702},
+          zoom: 11,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
-        var uluru = {lat: -15.7801, lng: -47.9292};
+        var unb = {lat: -15.7633, lng: -47.8702};
+        var ceub = {lat: -15.7670, lng: -47.8957};
+        var ucb = {lat: -15.8658, lng: -48.0328};
 
         var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
@@ -93,21 +174,68 @@
             '<li>Zootecnia(Vagas: 50, Concorrencia: 12/1, Conceito ENADE: 6)</li></ul>'+
             '</div>'+
             '</div>';
+        var contentString2 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Centro Universitario de Brasília - CEUB</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Cursos:</b></p>' +
+            '<ul><li>Matematica(Vagas: 30, Concorrencia: 10/1, Conceito ENADE: 5)</li> '+
+            '<li>Medicina(Vagas: 20, Concorrencia: 100/1, Conceito ENADE: 7)</li> '+
+            '<li>Pedagogia(Vagas: 40, Concorrencia: 7/1, Conceito ENADE: 4)</li> '+
+            '<li>Zootecnia(Vagas: 50, Concorrencia: 12/1, Conceito ENADE: 6)</li></ul>'+
+            '</div>'+
+            '</div>';
+        var contentString3 = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Universidade Catolica de Brasília - UCB</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Cursos:</b></p>' +
+            '<ul><li>Matematica(Vagas: 30, Concorrencia: 10/1, Conceito ENADE: 5)</li> '+
+            '<li>Medicina(Vagas: 20, Concorrencia: 100/1, Conceito ENADE: 7)</li> '+
+            '<li>Pedagogia(Vagas: 40, Concorrencia: 7/1, Conceito ENADE: 4)</li> '+
+            '<li>Zootecnia(Vagas: 50, Concorrencia: 12/1, Conceito ENADE: 6)</li></ul>'+
+            '</div>'+
+            '</div>';
 
         var infowindow = new google.maps.InfoWindow({
           content: contentString,
           maxWidth: 400
         });
+        var infowindow2 = new google.maps.InfoWindow({
+          content: contentString2,
+          maxWidth: 400
+        });
+        var infowindow3 = new google.maps.InfoWindow({
+          content: contentString3,
+          maxWidth: 400
+        });
 
         var marker = new google.maps.Marker({
-          position: uluru,
+          position: unb,
           map: map,
-          title: 'Uluru (Ayers Rock)'
+          title: 'Universidade de Brasília - UnB'
         });
         marker.addListener('click', function() {
           infowindow.open(map, marker);
         });
-
+        var marker2 = new google.maps.Marker({
+          position: ceub,
+          map: map,
+          title: 'Centro Universitario de Brasília - CEUB'
+        });
+        marker2.addListener('click', function() {
+          infowindow2.open(map, marker2);
+        });
+        var marker3 = new google.maps.Marker({
+          position: ucb,
+          map: map,
+          title: 'Universidade Catolica de Brasília - UCB'
+        });
+        marker3.addListener('click', function() {
+          infowindow3.open(map, marker3);
+        });
 
         // Create the search box and link it to the UI element.
         var input = document.getElementById('pac-input');
@@ -163,10 +291,67 @@
           });
           map.fitBounds(bounds);
         });
+
+
+        var service = new google.maps.places.PlacesService(map);
+        service.nearbySearch({
+          location: unb,
+          radius: 500,
+          type: ['store']
+        }, processResults);
+
+      }
+
+      function processResults(results, status, pagination) {
+        if (status !== google.maps.places.PlacesServiceStatus.OK) {
+          return;
+        } else {
+          //alteracao de results
+          results = [{icon:'',name:'UnB'},{icon:'',name:'CEUB'},{icon:'',name:'UCB'}];
+          createMarkers(results);
+
+          if (pagination.hasNextPage) {
+            var moreButton = document.getElementById('more');
+
+            moreButton.disabled = false;
+
+            moreButton.addEventListener('click', function() {
+              moreButton.disabled = true;
+              pagination.nextPage();
+            });
+          }
+        }
+      }
+
+      function createMarkers(places) {
+        var bounds = new google.maps.LatLngBounds();
+        var placesList = document.getElementById('places');
+
+        for (var i = 0, place; place = places[i]; i++) {
+          var image = {
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(25, 25)
+          };
+          /*
+          var marker = new google.maps.Marker({
+            map: map,
+            icon: image,
+            title: place.name,
+            position: place.geometry.location
+          });
+          */
+          placesList.innerHTML += '<li>' + place.name + '</li>';
+
+          //bounds.extend(place.geometry.location);
+        }
+        map.fitBounds(bounds);
       }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaOpMtN454GfUSKhLwSduchIfLuZgEoxw&libraries=places&callback=initAutocomplete"
+    <script src="https://maps.googleapis.com/maps/api/js?language=pt-BR&key=AIzaSyAaOpMtN454GfUSKhLwSduchIfLuZgEoxw&libraries=places&callback=initAutocomplete"
          async defer></script>
   </body>
 </html>
