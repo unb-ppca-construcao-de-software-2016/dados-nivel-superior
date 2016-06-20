@@ -35,4 +35,4 @@ As informações a seguir serão disponibilizadas:
 * [Trello](https://trello.com/b/HqxCn7sP/projeto2-ppca-unb)
 
 ## Deploy
-[Acesse o exemplo aqui](ondeestudar.herokuapp.com)
+[Acesse o exemplo aqui](http://www.ondeestudar.herokuapp.com)
