@@ -131,6 +131,20 @@
         background-color: #fcfcfc;
       }
     </style>
+    <script>
+    function HideContent(d) {
+    document.getElementById(d).style.display = "none";
+    }
+    function ShowContent(d) {
+    document.getElementById(d).style.display = "block";
+    }
+    function ReverseDisplay(d) {
+    if(document.getElementById(d).style.display == "none") { document.getElementById(d).style.display = "block"; }
+    else { document.getElementById(d).style.display = "none"; }
+    }
+    </script>
+
+
   </head>
   <body>
     <input id="pac-input" class="controls" type="text" placeholder="Procure seu curso aqui!">
@@ -179,11 +193,15 @@
             '</div>'+
             '<h1 id="firstHeading" class="firstHeading">Centro Universitario de Brasília - CEUB</h1>'+
             '<div id="bodyContent">'+
-            '<p><b>Cursos:</b></p>' +
-            '<ul><li>Matematica(Vagas: 30, Concorrencia: 10/1, Conceito ENADE: 5)</li> '+
-            '<li>Medicina(Vagas: 20, Concorrencia: 100/1, Conceito ENADE: 7)</li> '+
-            '<li>Pedagogia(Vagas: 40, Concorrencia: 7/1, Conceito ENADE: 4)</li> '+
-            '<li>Zootecnia(Vagas: 50, Concorrencia: 12/1, Conceito ENADE: 6)</li></ul>'+
+            '<p><b>Medicina</b></p>' +
+            '<ul><li>Número de vagas ofertadas para vestibular: <b>30</b></li> '+
+            '<li>Número de vagas ofertadas para SISU: <b>30</b></li> '+
+            '<li>Concorrência no vestibular: <b>200 candidatos/vaga</b></li> '+
+            '<li>Concorrência no SISU: <b>100 candidatos/vaga</b></li>'+
+            '<li>Taxa de desistência para ingressos via vestibular: <b>1%</b></li>'+
+            '<li>Taxa de desistência para ingressos via SISU: <b>2%</b></li>'+
+            '<li>Conceito ENADE: <b>7</b></li>'+
+            '<li>*Dados referentes ao ano de 2015</li></ul>'+
             '</div>'+
             '</div>';
         var contentString3 = '<div id="content">'+
@@ -192,10 +210,46 @@
             '<h1 id="firstHeading" class="firstHeading">Universidade Catolica de Brasília - UCB</h1>'+
             '<div id="bodyContent">'+
             '<p><b>Cursos:</b></p>' +
-            '<ul><li>Matematica(Vagas: 30, Concorrencia: 10/1, Conceito ENADE: 5)</li> '+
-            '<li>Medicina(Vagas: 20, Concorrencia: 100/1, Conceito ENADE: 7)</li> '+
-            '<li>Pedagogia(Vagas: 40, Concorrencia: 7/1, Conceito ENADE: 4)</li> '+
-            '<li>Zootecnia(Vagas: 50, Concorrencia: 12/1, Conceito ENADE: 6)</li></ul>'+
+            '<ul><li><a href="javascript:ReverseDisplay(\'uniquename1\')">Matematica</a> '+
+            '<div id="uniquename1" style="display:none;"> '+
+            '<p>Número de vagas ofertadas para vestibular: <b>30</b></p> '+
+            '<p>Número de vagas ofertadas para SISU: <b>30</b></p> '+
+            '<p>Concorrência no vestibular: <b>200 candidatos/vaga</b></p> '+
+            '<p>Concorrência no SISU: <b>100 candidatos/vaga</b></p>'+
+            '<p>Taxa de desistência para ingressos via vestibular: <b>1%</b></p>'+
+            '<p>Taxa de desistência para ingressos via SISU: <b>2%</b></p>'+
+            '<p>Conceito ENADE: <b>7</b></p>'+
+            '</div></li> '+
+            '<li><a href="javascript:ReverseDisplay(\'uniquename2\')">Medicina</a> '+
+            '<div id="uniquename2" style="display:none;"> '+
+            '<p>Número de vagas ofertadas para vestibular: <b>30</b></p> '+
+            '<p>Número de vagas ofertadas para SISU: <b>30</b></p> '+
+            '<p>Concorrência no vestibular: <b>200 candidatos/vaga</b></p> '+
+            '<p>Concorrência no SISU: <b>100 candidatos/vaga</b></p>'+
+            '<p>Taxa de desistência para ingressos via vestibular: <b>1%</b></p>'+
+            '<p>Taxa de desistência para ingressos via SISU: <b>2%</b></p>'+
+            '<p>Conceito ENADE: <b>7</b></p>'+
+            '</div></li> '+
+            '<li><a href="javascript:ReverseDisplay(\'uniquename3\')">Pedagogia</a> '+
+            '<div id="uniquename3" style="display:none;"> '+
+            '<p>Número de vagas ofertadas para vestibular: <b>30</b></p> '+
+            '<p>Número de vagas ofertadas para SISU: <b>30</b></p> '+
+            '<p>Concorrência no vestibular: <b>200 candidatos/vaga</b></p> '+
+            '<p>Concorrência no SISU: <b>100 candidatos/vaga</b></p>'+
+            '<p>Taxa de desistência para ingressos via vestibular: <b>1%</b></p>'+
+            '<p>Taxa de desistência para ingressos via SISU: <b>2%</b></p>'+
+            '<p>Conceito ENADE: <b>7</b></p>'+
+            '</div></li> '+
+            '<li><a href="javascript:ReverseDisplay(\'uniquename4\')">Zootecnia</a> '+
+            '<div id="uniquename4" style="display:none;"> '+
+            '<p>Número de vagas ofertadas para vestibular: <b>30</b></p> '+
+            '<p>Número de vagas ofertadas para SISU: <b>30</b></p> '+
+            '<p>Concorrência no vestibular: <b>200 candidatos/vaga</b></p> '+
+            '<p>Concorrência no SISU: <b>100 candidatos/vaga</b></p>'+
+            '<p>Taxa de desistência para ingressos via vestibular: <b>1%</b></p>'+
+            '<p>Taxa de desistência para ingressos via SISU: <b>2%</b></p>'+
+            '<p>Conceito ENADE: <b>7</b></p>'+
+            '</div></li> </ul>'+
             '</div>'+
             '</div>';
 
