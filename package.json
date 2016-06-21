@@ -4,6 +4,16 @@
   "description": "Dados Nivel Superior",
   "main": "server.js",
   "author": "Grupo 2 - CS 2016/PPCA/UNB",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unb-ppca-construcao-de-software-2016/dados-nivel-superior.git"
+  },
+  "engines":{
+  	"node":"4.4.5"
+  },
   "dependencies": {
     "body-parser": "^1.4.3",
     "express": "^4.13.4",
