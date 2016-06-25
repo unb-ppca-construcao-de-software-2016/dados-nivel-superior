@@ -14,6 +14,12 @@ app.use(bodyParser.json()); // parse application/json
 app.use(bodyParser.json({type: 'application/vnd.api+json'})); // parse application/vnd.api+json as json
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request
 
+app.post('/', function(req, res) {
+    console.log("Redirecionando para o resultado ");
+    res.redirect('search.html');
+});
+
 // listen (start app with node server.js) ======================================
 app.listen(port);
 console.log("App listening on port " + port);
+
