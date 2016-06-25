@@ -27,8 +27,18 @@ As informações a seguir serão disponibilizadas:
 - Qual o conceito do curso, segundo o ENADE, em cada IES. 
 
 ## Plano de Entregas (Em definição)
-* **24/06/16** - Wireframe e lista de funcionalidades esperadas.
-* **01/07/16** - Primeira versão funcional com conjunto mínimo de funcionalidades
+* **24/06/16**
+**[Protótipo](https://ondeestudar.herokuapp.com/)**
+O protótipo corresponde ao resultado de uma consulta realizada por um curso, cujo resultado consiste em três instituições de ensino. Ao clicar sobre as marcações o protótipo exibe formas diferentes de apresentação dos dados do INEP ainda em validação.
+
+**Lista de funcionalidades esperadas:**
+- Pesquisa de cursos/instituições;
+- Pesquisa avançada;
+- Visualização espacial das instituições;
+- Detalhamento dos cursos da instituição com os microdados do INEP;
+- Detalhamento das informações do curso;
+- Detalhamento das informações da carreira;
+* **01/07/16** - Primeira versão funcional com conjunto mínimo de funcionalidades e video de divulgação do serviço
 * **08/07/16** - Versão Final do serviço com todas as funcionalidades importantes
 
 ## Ferramentas de apoio
