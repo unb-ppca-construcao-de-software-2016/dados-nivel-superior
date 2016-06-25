@@ -3,6 +3,7 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+	<link rel="icon", type="image/png", href="educa.ico">
     <title>Onde estudar?</title>
     <style>
       html, body {
@@ -273,6 +274,7 @@
         var marker = new google.maps.Marker({
           position: unb,
           map: map,
+		  icon: 'educa_marcador.png',
           title: 'Universidade de Brasília - UnB'
         });
         marker.addListener('click', function() {
@@ -281,6 +283,7 @@
         var marker2 = new google.maps.Marker({
           position: ceub,
           map: map,
+		  icon: 'educa_marcador.png',
           title: 'Centro Universitario de Brasília - CEUB'
         });
         marker2.addListener('click', function() {
@@ -289,6 +292,7 @@
         var marker3 = new google.maps.Marker({
           position: ucb,
           map: map,
+		  icon: 'educa_marcador.png',
           title: 'Universidade Catolica de Brasília - UCB'
         });
         marker3.addListener('click', function() {
