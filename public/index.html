@@ -5,6 +5,14 @@
     <meta charset="utf-8">
 	<link rel="icon", type="image/png", href="educa.ico">
     <title>Onde estudar?</title>
+	<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.6&appId=243651819353536";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+		
     <style type="text/css">
     #centro {
       width:544px;
@@ -17,8 +25,8 @@
     }
 	
 	#pac-input {
-background: #eee; padding:10px; border:15 none; width:340px;
-
+background: #eee; padding:10px; border:15 none; width:240px;
+font-weight:bolder;
 }
 #pesquisa-botao {
 border: 1px solid #222;
@@ -46,10 +54,15 @@ background:  url(http://i.imgur.com/cz4sguf.png) no-repeat left #2375E6;
 	
     </style>
   </head>
-  <body>
+  <body style="background:url(bghead.png) no-repeat top center fixed;opacity:0.75;  background-size:cover;">
+  
+      
     <div id="centro">
       <div id="logo" align="center">
-        <img id="centroimg" src="ondeestudar.png" height="114" width="544">
+        <img id="centroimg" src="ondeestudar.png" height="134" width="404" style="opacity:0.75;">
+		
+		
+		
       </div>
       <div id="search" align="center" style="margin-top:40px;">
         <form method="POST">
@@ -57,8 +70,11 @@ background:  url(http://i.imgur.com/cz4sguf.png) no-repeat left #2375E6;
         </form>
       </div>
       <div id="video" align="center" style="margin-top:40px;">
-        <iframe allowTransparency="true" frameborder="0" scrolling="no" src="//www.youtube.com/embed/AQcjxkl5ejo?rel=0" style="width:514px; height:339px;"></iframe>
+        <iframe allowTransparency="true" frameborder="0" scrolling="no" src="//www.youtube.com/embed/AQcjxkl5ejo?rel=0" style="width:404px; height:301px;"></iframe>
       </div>
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="fb-like" data-href="https://www.facebook.com/ondeestudarbr/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+	  
+	  
     </div>
   </body>
 </html>
