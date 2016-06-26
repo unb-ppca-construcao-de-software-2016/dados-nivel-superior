@@ -6,8 +6,10 @@
     <meta charset="utf-8">
 	<link rel="icon", type="image/png", href="aluno.png">
     <title>Onde estudar?</title>
-	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-	
+	<link rel="stylesheet" href="tamanho.css">
+
+<link href="site.min.css" rel="stylesheet" type="text/css">
+
 	<script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -30,8 +32,9 @@
     }
 	
 	#pac-input {
-background: #eee; padding:5px; border:15 none; width:240px;
+background: #eee; padding:5px; border:15 none; width:auto;
 font-weight:bolder;
+font-size: 150%;
 }
 #pesquisa-botao {
 border: 1px solid #222;
@@ -45,21 +48,33 @@ border:0 none;
 font-weight:bold;
 border-top-right-radius: 7px;
 border-bottom-right-radius: 7px;
-
+font-size: 150%;
 }
 #pesquisa-botao:hover {
 cursor: pointer;
 background:  url(http://i.imgur.com/cz4sguf.png) no-repeat left #2375E6;
 
+
+
+#footer,
+#footer .container-fluid {
+    background-color: #FFFFFF;
+	clear: both;
+}
+
 }
 
 
-	
+
+
+
+
 	
     </style>
   </head>
    <body>
-    <div id="centro">
+   <div class="body-content">
+           
       <div id="logo" align="center">
         <img id="centroimg" src="logo_2.png">
       </div>
@@ -69,11 +84,43 @@ background:  url(http://i.imgur.com/cz4sguf.png) no-repeat left #2375E6;
         </form>
       </div>
       <div id="video" align="center" style="margin-top:40px;">
-        <iframe allowTransparency="true" frameborder="0" scrolling="no" src="//www.youtube.com/embed/AQcjxkl5ejo?rel=0" style="width:85%; height:339px;"></iframe>
+        <iframe allowTransparency="true" frameborder="0" scrolling="no" src="//www.youtube.com/embed/AQcjxkl5ejo?rel=0" style="height:380px;"></iframe>
       </div>
 	  
-	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div class="fb-like" data-href="https://www.facebook.com/ondeestudarbr/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 	  
+	  
+	  <br><br> <br> <br>
+              
+                </div>
+         
+         
+   
+   	  
+	  <div id="footer">
+    
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <ul class="footerLinks">
+            <li class="copyright">PPCA 2016. Todos os direitos reservados</li>
+                        
+                        <li class="separator">|</li>
+                        
+                        
+                        <li><a href="" target="_blank">Termos de utilização</a></li>
+                        <li class="separator">|</li>
+                        
+						 <li><a href="" target="_blank">Sobre</a></li>
+						<li class="separator">|</li>
+						<br>
+						<li> <div class="fb-like" data-href="https://www.facebook.com/ondeestudarbr/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></li>
+                        
+        </ul>
     </div>
+</div>
+
+	
+	
+		
   </body>
 </html>
