@@ -1,13 +1,28 @@
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px){
 	iframe {
 		width:100%;
 	}
 	
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (max-width: 1364px) and (min-width:1025px) {
 	iframe {
-		width:27%;
+		width:47%;
+	}
+	
+}
+
+
+@media screen and (max-width: 1599px) and (min-width:1365px) {
+	iframe {
+		width:35%;
+	}
+	
+}
+
+@media screen and (min-width: 1600px) {
+	iframe {
+		width:30%;
 	}
 	
 }
