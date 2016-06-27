@@ -26,3 +26,19 @@
 	}
 	
 }
+
+@media screen and (min-width: 458px){
+	#pac-input {
+		width:auto;
+		
+	}
+	
+}
+
+@media screen and (max-width: 457px){
+	#pac-input {
+		width:70%;
+	}
+	
+}
+
