@@ -191,6 +191,55 @@ li:nth-child(odd) {
 				mapTypeId : google.maps.MapTypeId.ROADMAP
 			});
 
+			var resultado = [{nome:'Universidade de Brasília - UnB',
+							coord : {lat : -15.7633, lng : -47.8702},
+							cursos: [{nome:'Matematica'},{nome:'Medicina'},{nome:'Pedagogia'},{nome:'Zootecnia'}]},
+							{nome:'Centro Universitario de Brasília - CEUB',
+							coord : {lat : -15.7670, lng : -47.8957},
+							cursos: [{nome:'Letras'},{nome:'Medicina'},{nome:'Pedagogia'},{nome:'Processamento de Dados'}]},
+							{nome:'Universidade Catolica de Brasília - UCB',
+							coord : {lat : -15.8658, lng : -48.0328},
+							cursos: [{nome:'Biologia'},{nome:'Medicina'},{nome:'Pedagogia'},{nome:'Terapia Ocupacional'}]}];
+
+			resultado.forEach(function (item, index) {
+
+				var marker = new google.maps.Marker({
+					position : item.coord,
+					map : map,
+					icon : '/images/educa_marcador.png',
+					title : item.nome
+				});
+
+				var contentString = '<div id="content">'
+					+ '<div id="siteNotice">'
+					+ '</div>'
+					+ '<h1 id="firstHeading" class="firstHeading">'+item.nome+'</h1>'
+					+ '<div id="bodyContent">'
+					+ '<p><b>Cursos:</b></p>'
+					+ '<ul>';
+
+				item.cursos.forEach(function (curso, indexCurso) {
+					contentString = contentString + '<li>' + curso.nome + '</li>';
+				});
+
+				contentString = contentString 
+					+ '</ul>'
+					+ '</div>' 
+					+ '</div>';
+
+				var infowindow = new google.maps.InfoWindow({
+					content : contentString,
+					maxWidth : 400
+				});
+
+				marker.addListener('click', function() {
+					infowindow.open(map, marker);
+				});
+
+			});
+
+			/*
+			
 			var unb = {
 				lat : -15.7633,
 				lng : -47.8702
@@ -321,6 +370,8 @@ li:nth-child(odd) {
 			marker3.addListener('click', function() {
 				infowindow3.open(map, marker3);
 			});
+			
+			*/
 
 			// Create the search box and link it to the UI element.
 			var input = document.getElementById('pac-input');
@@ -376,14 +427,14 @@ li:nth-child(odd) {
 				});
 				map.fitBounds(bounds);
 			});
-
+			/*
 			var service = new google.maps.places.PlacesService(map);
 			service.nearbySearch({
 				location : unb,
 				radius : 500,
 				type : [ 'store' ]
 			}, processResults);
-
+			*/
 		}
 
 		function processResults(results, status, pagination) {
