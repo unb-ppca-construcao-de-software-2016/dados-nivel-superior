@@ -43,8 +43,8 @@ module.exports = function(app){
 				coord : {lat : -15.8658, lng : -48.0328},
 				cursos: [{nome:'Biologia'},{nome:'Medicina'},{nome:'Pedagogia'},{nome:'Terapia Ocupacional'}]}];
 		
-		res.redirect('/dadosnivelsuperior/search');		
-
+		//res.redirect('/dadosnivelsuperior/search');		
+		res.render('dadosnivelsuperior/search', {resultado: resultado});		
 		
 	});
 }

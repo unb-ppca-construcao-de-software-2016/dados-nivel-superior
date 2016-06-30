@@ -191,15 +191,18 @@ li:nth-child(odd) {
 				mapTypeId : google.maps.MapTypeId.ROADMAP
 			});
 
-			var resultado = [{nome:'Universidade de Brasília - UnB',
-							coord : {lat : -15.7633, lng : -47.8702},
-							cursos: [{nome:'Matematica'},{nome:'Medicina'},{nome:'Pedagogia'},{nome:'Zootecnia'}]},
-							{nome:'Centro Universitario de Brasília - CEUB',
-							coord : {lat : -15.7670, lng : -47.8957},
-							cursos: [{nome:'Letras'},{nome:'Medicina'},{nome:'Pedagogia'},{nome:'Processamento de Dados'}]},
-							{nome:'Universidade Catolica de Brasília - UCB',
-							coord : {lat : -15.8658, lng : -48.0328},
-							cursos: [{nome:'Biologia'},{nome:'Medicina'},{nome:'Pedagogia'},{nome:'Terapia Ocupacional'}]}];
+			var resultado = [];
+			var cursos = [];
+			<% resultado.forEach(function (result, index) { %>
+			cursos = [];
+			<% result.cursos.forEach(function (curso, indexCurso) { %>
+			cursos.push({nome:'<%= curso.nome %>'});
+			<% }); %>	
+			resultado.push({nome:'<%= result.nome %>',
+							coord : {lat : <%= result.coord.lat %>, lng : <%= result.coord.lng %>},
+							cursos: cursos});						
+			<% }); %>
+			
 
 			resultado.forEach(function (item, index) {
 
