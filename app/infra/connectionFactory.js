@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+mongoose.connect('mongodb:mongodb://ondeestudar:ppca1521@ds023684.mlab.com:23684/ondeestudar');
 
 var connectMongoose = function() {
 	if (!process.env.NODE_ENV) {
