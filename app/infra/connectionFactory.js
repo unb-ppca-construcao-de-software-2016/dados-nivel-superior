@@ -105,7 +105,7 @@ db.once('open', function() {
 			Curso.find({NO_IES: /UNIVERSIDADE DE BRAS/},{NO_CURSO: 1, _id: 0}, function(err, cursos){
 				if(err) return console.err(err);
 				var resultado = ['{nome: '+instituicaos.NO_IES+', coord: {lat: '+coordenadas.latitude+', lng: '+coordenadas.latitude+'}, cursos: ['+cursos+'}]}']
-				console.log(resultado)
+				//console.log(resultado)
 				db.close()
 			});
         	});
@@ -115,7 +115,7 @@ db.once('open', function() {
 
 // Wrapper: Feito desta forma para que a inicialização seja tardia da conexão
 module.exports = function() {
-	return connectMongoose;
+	return resultado;
 	
 }
 
