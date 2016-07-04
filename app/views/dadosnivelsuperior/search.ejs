@@ -162,15 +162,18 @@ li:nth-child(odd) {
 
 </head>
 <body>
+	<!--
 	<input id="pac-input" class="controls" type="text"
 		placeholder="Procure seu curso aqui!">
+	-->
 	<div id="map"></div>
+	<!--
 	<div id="right-panel">
 		<h2>Resultados</h2>
 		<ul id="places"></ul>
 		<button id="more">Mais resultados</button>
 	</div>
-
+	-->
 	<script>
 		// This example adds a search box to a map, using the Google Place Autocomplete
 		// feature. People can enter geographical searches. The search box will return a
@@ -187,7 +190,7 @@ li:nth-child(odd) {
 					lat : -15.7633,
 					lng : -47.8702
 				},
-				zoom : 11,
+				zoom : 4,
 				mapTypeId : google.maps.MapTypeId.ROADMAP
 			});
 
@@ -376,6 +379,7 @@ li:nth-child(odd) {
 			
 			*/
 
+			/*
 			// Create the search box and link it to the UI element.
 			var input = document.getElementById('pac-input');
 			var searchBox = new google.maps.places.SearchBox(input);
@@ -430,6 +434,7 @@ li:nth-child(odd) {
 				});
 				map.fitBounds(bounds);
 			});
+			*/
 			/*
 			var service = new google.maps.places.PlacesService(map);
 			service.nearbySearch({

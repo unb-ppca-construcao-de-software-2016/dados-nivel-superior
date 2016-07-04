@@ -1,18 +1,27 @@
 var mongoose = require('mongoose');
-var db = mongoose.connection;
+
+//mongoose.connection.on('connected',function(){
+//	console.log('mongoose connected');
+//});
+
 mongoose.connect('mongodb://ondeestudar:ppca1521@ds023684.mlab.com:23684/ondeestudar?authMechanism=SCRAM-SHA-1');
-db.on('error', console.error);
-var resultado = undefined
-db.once('open', function() {
-   	console.log('Conectado ao MongoDB');
+
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+
+db.once('open', function callback() {
+	console.log('mongoose opened');
+
 	//Schema da collection coordenadas
 	var coordSchema = new mongoose.Schema({
 		co_municipio_curso: String,
 		latitude: String,
 		longitude: String
 	});
-	   //Schema da collection curso
-	   var cursoSchema = new mongoose.Schema({
+    
+    //Schema da collection curso
+    var cursoSchema = new mongoose.Schema({
 		CO_IES: Number,
 		NO_IES: String,
 		CO_CATEGORIA_ADMINISTRATIVA: Number,
@@ -91,33 +100,8 @@ db.once('open', function() {
 		QT_INGRESSO_VAGAS_NOVAS: Number
 	});
 
-
 	var Curso = mongoose.model('curso', cursoSchema, 'curso');
 	var Coordenadas = mongoose.model('coordenadas', coordSchema, 'coordenadas');	
-	//Busca um registro para a UnB
-
-	Curso.findOne({NO_IES: /UNIVERSIDADE DE BRAS/}, function(err, instituicaos){
-		if(err) return console.err(err);
-		//Busca as coordenadas para o municipio
-     		Coordenadas.findOne({co_municipio_curso: instituicaos.CO_MUNICIPIO_CURSO}, function(err, coordenadas){
-          		if(err) return console.err(err);
-                	//console.log('nome:\'%s\', \ncoord: {lat: %s, lng: %s} \ncursos:{nome: %s}', instituicaos.NO_IES, coordenadas.latitude, coordenadas.longitude, instituicaos.NO_CURSO);
-			Curso.find({NO_IES: /UNIVERSIDADE DE BRAS/},{NO_CURSO: 1, _id: 0}, function(err, cursos){
-				if(err) return console.err(err);
-				var resultado = ['{nome: '+instituicaos.NO_IES+', coord: {lat: '+coordenadas.latitude+', lng: '+coordenadas.latitude+'}, cursos: ['+cursos+'}]}']
-				//console.log(resultado)
-				db.close()
-			});
-        	});
-        });
+	var my_schemas = {'Curso' : Curso, 'Coordenadas': Coordenadas};
+	module.exports = my_schemas;
 });
-
-
-// Wrapper: Feito desta forma para que a inicialização seja tardia da conexão
-module.exports = function() {
-	return resultado;
-	
-}
-
-
-
