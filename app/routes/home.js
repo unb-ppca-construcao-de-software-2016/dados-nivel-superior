@@ -38,7 +38,7 @@ module.exports = function(app){
 		var Coordenadas = schemas.Coordenadas;
 		var resultado = [];
 		
-		Curso.find({ $text: { $search: chaveDaBusca }}).sort({ CO_IES: 1, NO_CURSO: 1}).exec(function(err, instituicoes){
+		Curso.find({ $text: { $search: chaveDaBusca }}).sort({ CO_IES: 1, CO_MUNICIPIO_CURSO: 1, NO_CURSO: 1}).exec(function(err, instituicoes){
 			if(err) return console.log(err);			
 
 			//Busca as coordenadas para o municipio
@@ -46,17 +46,19 @@ module.exports = function(app){
 				if(err) return console.log(err);
 		
 				var coIES = null;
+				var coMUNICIPIO = null;
 				var cursosIES = [];
 			
 				instituicoes.forEach(function (instituicao) {
 					console.log('IES: '+instituicao.CO_IES+' CURSO('+instituicao.CO_CURSO+'): '+instituicao.NO_CURSO);
 					
-					//controle para construir apenas um objeto por IES
-					if (coIES == instituicao.CO_IES) {
+					//controle para construir apenas um objeto por IES/Municipio
+					if (coIES == instituicao.CO_IES && coMUNICIPIO == instituicao.CO_MUNICIPIO_CURSO) {
 						cursosIES.push({nome: instituicao.NO_CURSO});
 					} else {
 						coIES = instituicao.CO_IES;
-						if (instituicao.CO_MUNICIPIO_CURSO) {
+						coMUNICIPIO = instituicao.CO_MUNICIPIO_CURSO;
+						if (coMUNICIPIO) {
 							cursosIES = [];
 							cursosIES.push({nome: instituicao.NO_CURSO});
 							var coordenada = getCoordenada(instituicao, coordenadas);
