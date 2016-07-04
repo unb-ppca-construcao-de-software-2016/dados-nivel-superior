@@ -38,7 +38,8 @@ module.exports = function(app){
 		var Coordenadas = schemas.Coordenadas;
 		var resultado = [];
 		
-		Curso.find({ $text: { $search: chaveDaBusca }}).sort({ CO_IES: 1, CO_MUNICIPIO_CURSO: 1, NO_CURSO: 1}).exec(function(err, instituicoes){
+		//Busca cursos com a expressao de busca que sejam de GRADUACAO e ATIVOS
+		Curso.find({ $text: { $search: chaveDaBusca }, CO_NIVEL_ACADEMICO: 1, CO_SITUACAO_CURSO: 1}).sort({ CO_IES: 1, CO_MUNICIPIO_CURSO: 1, NO_CURSO: 1}).exec(function(err, instituicoes){
 			if(err) return console.log(err);			
 
 			//Busca as coordenadas para o municipio
@@ -54,18 +55,19 @@ module.exports = function(app){
 					
 					//controle para construir apenas um objeto por IES/Municipio
 					if (coIES == instituicao.CO_IES && coMUNICIPIO == instituicao.CO_MUNICIPIO_CURSO) {
-						cursosIES.push({nome: instituicao.NO_CURSO});
+						cursosIES.push({nome: instituicao.NO_CURSO, grau: instituicao.DS_GRAU_ACADEMICO});
 					} else {
 						coIES = instituicao.CO_IES;
 						coMUNICIPIO = instituicao.CO_MUNICIPIO_CURSO;
 						if (coMUNICIPIO) {
 							cursosIES = [];
-							cursosIES.push({nome: instituicao.NO_CURSO});
+							cursosIES.push({nome: instituicao.NO_CURSO, grau: instituicao.DS_GRAU_ACADEMICO});
 							var coordenada = getCoordenada(instituicao, coordenadas);
 							if (coordenada) {
 								var latitude = parseFloat(coordenada.latitude.replace(",","."));
 								var longitude = parseFloat(coordenada.longitude.replace(",","."));
 								resultado.push({nome: instituicao.NO_IES,
+									categoria: instituicao.DS_CATEGORIA_ADMINISTRATIVA,									
 									coord : {lat : latitude, 
 											 lng : longitude},
 									cursos: cursosIES}

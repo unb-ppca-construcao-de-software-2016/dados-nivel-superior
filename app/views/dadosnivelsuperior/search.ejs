@@ -199,9 +199,10 @@ li:nth-child(odd) {
 			<% resultado.forEach(function (result, index) { %>
 			cursos = [];
 			<% result.cursos.forEach(function (curso, indexCurso) { %>
-			cursos.push({nome:'<%= curso.nome %>'});
+			cursos.push({nome:'<%= curso.nome %>', grau:'<%= curso.grau %>'});
 			<% }); %>	
 			resultado.push({nome:'<%= result.nome %>',
+							categoria:'<%= result.categoria %>',
 							coord : {lat : <%= result.coord.lat %>, lng : <%= result.coord.lng %>},
 							cursos: cursos});						
 			<% }); %>
@@ -220,12 +221,14 @@ li:nth-child(odd) {
 					+ '<div id="siteNotice">'
 					+ '</div>'
 					+ '<h1 id="firstHeading" class="firstHeading">'+item.nome+'</h1>'
+					+ '<h3 id="firstHeading" class="firstHeading">'+item.categoria+'</h3>'
 					+ '<div id="bodyContent">'
 					+ '<p><b>Cursos:</b></p>'
 					+ '<ul>';
 
 				item.cursos.forEach(function (curso, indexCurso) {
-					contentString = contentString + '<li>' + curso.nome + '</li>';
+					contentString = contentString + '<li>' 
+						+ curso.nome + '(' + curso.grau + ')' + '</li>';
 				});
 
 				contentString = contentString 
