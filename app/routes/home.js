@@ -37,9 +37,17 @@ module.exports = function(app){
 		var Curso = schemas.Curso;
 		var Coordenadas = schemas.Coordenadas;
 		var resultado = [];
-		
+		var paramRegex = new RegExp(chaveDaBusca.toUpperCase());
+
 		//Busca cursos com a expressao de busca que sejam de GRADUACAO e ATIVOS
-		Curso.find({ $text: { $search: chaveDaBusca }, CO_NIVEL_ACADEMICO: 1, CO_SITUACAO_CURSO: 1}).sort({ CO_IES: 1, CO_MUNICIPIO_CURSO: 1, NO_CURSO: 1}).exec(function(err, instituicoes){
+		//Consulta por indice comentada por apresentar limitacao na busca de resultados
+		//Curso.find({ $text: { $search: chaveDaBusca }, CO_NIVEL_ACADEMICO: 1, CO_SITUACAO_CURSO: 1}).sort({ CO_IES: 1, CO_MUNICIPIO_CURSO: 1, NO_CURSO: 1}).exec(function(err, instituicoes){	
+		Curso.find().and([
+			{CO_NIVEL_ACADEMICO: 1}, 
+			{CO_SITUACAO_CURSO: 1}, 
+			{$or: [{NO_IES: {$regex: paramRegex}}, {NO_CURSO: {$regex: paramRegex}}, {NO_MUNICIPIO_CURSO: {$regex: paramRegex}}]}])
+			.sort({ CO_IES: 1, CO_MUNICIPIO_CURSO: 1, NO_CURSO: 1}).exec(function(err, instituicoes){
+
 			if(err) return console.log(err);			
 
 			//Busca as coordenadas para o municipio
