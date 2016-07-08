@@ -1,10 +1,8 @@
 var mongoose = require('mongoose');
 
-//mongoose.connection.on('connected',function(){
-//	console.log('mongoose connected');
-//});
+//mongoose.connect('mongodb://ondeestudar:ppca1521@ds023684.mlab.com:23684/ondeestudar?authMechanism=SCRAM-SHA-1');
 
-mongoose.connect('mongodb://ondeestudar:ppca1521@ds023684.mlab.com:23684/ondeestudar?authMechanism=SCRAM-SHA-1');
+mongoose.connect('mongodb://127.0.0.1/test');
 
 
 var db = mongoose.connection;

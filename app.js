@@ -6,5 +6,5 @@ var http = require('http').Server(app);
 var port = process.env.PORT || 8080;
 
 http.listen(port, function(){
-	console.log('Servidor moendo na porta ['+port+']... manda bala! =)');
+	console.log(new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')  + ' >>>> Servidor moendo na porta '+port+'... manda bala! =)');
 });
