@@ -1,8 +1,8 @@
-# dados-nivel-superior
+# Dados sobre Nível Superior para Alunos Egressos de Nível Medio
 
 <img src="http://www.infoescola.com/wp-content/uploads/2014/04/unb.jpg" width="100"/>
 
-Repositório para artefatos do segundo trabalho da disciplina Construção de Software
+Repositório para artefatos do segundo trabalho da disciplina Construção de Software.
 
 ## Integrantes
 - [Alan Mazuco](https://github.com/alanMazuco)
