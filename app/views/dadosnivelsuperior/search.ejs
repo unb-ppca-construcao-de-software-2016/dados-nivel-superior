@@ -199,7 +199,7 @@ li:nth-child(odd) {
 			<% resultado.forEach(function (result, index) { %>
 			cursos = [];
 			<% result.cursos.forEach(function (curso, indexCurso) { %>
-			cursos.push({nome:'<%= curso.nome %>', grau:'<%= curso.grau %>'});
+			cursos.push({nome:'<%= curso.nome %>', grau:'<%= curso.grau %>', vagas:'<%= curso.vagas %>', inscritos:'<%= curso.inscritos %>', concorrencia:'<%= curso.concorrencia %>'});
 			<% }); %>	
 			resultado.push({nome:'<%= result.nome %>',
 							categoria:'<%= result.categoria %>',
@@ -216,7 +216,7 @@ li:nth-child(odd) {
 					icon : '/images/educa_marcador.png',
 					title : item.nome
 				});
-
+/*
 				var contentString = '<div id="content">'
 					+ '<div id="siteNotice">'
 					+ '</div>'
@@ -227,8 +227,38 @@ li:nth-child(odd) {
 					+ '<ul>';
 
 				item.cursos.forEach(function (curso, indexCurso) {
-					contentString = contentString + '<li>' 
-						+ curso.nome + '(' + curso.grau + ')' + '</li>';
+					contentString = contentString + '<li><b>' +
+						curso.nome + '</b>(' + curso.grau + 
+						' - vagas:' + curso.vagas +
+						' inscritos:' + curso.inscritos +
+						' concorrência:' + curso.concorrencia + ')' + '</li>';
+				});
+
+				contentString = contentString 
+					+ '</ul>'
+					+ '</div>' 
+					+ '</div>';
+*/
+				var contentString = '<div id="content">'
+					+ '<div id="siteNotice">'
+					+ '</div>'
+					+ '<h1 id="firstHeading" class="firstHeading">'+item.nome+'</h1>'
+					+ '<h3 id="firstHeading" class="firstHeading">'+item.categoria+'</h3>'
+					+ '<div id="bodyContent">'
+					+ '<p><b>Cursos:</b></p>'
+					+ '<ul>';
+
+				item.cursos.forEach(function (curso, indexCurso) {
+					
+					var idDiv = index + 'uniquename' + indexCurso;
+					contentString = contentString + 
+					'<li><a href="javascript:ReverseDisplay(\''+idDiv+'\')">'+curso.nome+
+					'('+curso.grau+')</a>' +
+					'<div id="'+idDiv+'" style="display:none;"> ' +
+					'<p>Número de vagas: <b>'+curso.vagas+'</b></p>'+
+					'<p>Número de inscritos: <b>'+curso.inscritos+'</b></p>'+
+					'<p>Concorrência 2014: <b>'+curso.concorrencia+'</b></p>'+
+					'</div></li> ';
 				});
 
 				contentString = contentString 
@@ -238,7 +268,7 @@ li:nth-child(odd) {
 
 				var infowindow = new google.maps.InfoWindow({
 					content : contentString,
-					maxWidth : 400
+					maxWidth : 500
 				});
 
 				marker.addListener('click', function() {

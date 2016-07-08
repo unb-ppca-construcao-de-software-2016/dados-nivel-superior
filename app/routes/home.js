@@ -74,8 +74,15 @@ module.exports = function(app){
 					
 					//controle para construir apenas um objeto por IES/Municipio
 					if (coIES == instituicao.CO_IES && coMUNICIPIO == instituicao.CO_MUNICIPIO_CURSO) {
-
-						cursosIES.push({nome: instituicao.NO_CURSO, grau: instituicao.DS_GRAU_ACADEMICO});
+						var vagas = getTotalVagas(instituicao);
+						var inscritos = getTotalInscritos(instituicao);
+						cursosIES.push({
+							nome: instituicao.NO_CURSO, 
+							grau: instituicao.DS_GRAU_ACADEMICO,
+							vagas: vagas,
+							inscritos: inscritos,
+							concorrencia: getConcorrencia(vagas, inscritos)
+						});
 					} else {
 
 						coIES = instituicao.CO_IES;
@@ -85,8 +92,16 @@ module.exports = function(app){
 						if (coMUNICIPIO) {
 							
 							cursosIES = [];
+							var vagas = getTotalVagas(instituicao);
+							var inscritos = getTotalInscritos(instituicao);
 							
-							cursosIES.push({nome: instituicao.NO_CURSO, grau: instituicao.DS_GRAU_ACADEMICO});
+							cursosIES.push({
+								nome: instituicao.NO_CURSO, 
+								grau: instituicao.DS_GRAU_ACADEMICO,
+								vagas: vagas,
+								inscritos: inscritos,
+								concorrencia: getConcorrencia(vagas, inscritos)
+							});
 							
 							var coordenada = getCoordenada(instituicao, coordenadas);
 							
@@ -134,5 +149,50 @@ module.exports = function(app){
 
 		}
 		return coordenadaRet;
+	}
+
+	function getTotalVagas(curso) {
+		return curso.QT_VAGAS_NOVAS_INTEGRAL +
+			curso.QT_VAGAS_NOVAS_MATUTINO +
+			curso.QT_VAGAS_NOVAS_VESPERTINO +
+			curso.QT_VAGAS_NOVAS_NOTURNO +
+			curso.QT_VAGAS_NOVAS_EAD +
+			curso.QT_VAGAS_REMANESC_INTEGRAL +
+			curso.QT_VAGAS_REMANESC_MATUTINO +
+			curso.QT_VAGAS_REMANESC_VESPERTINO +
+			curso.QT_VAGAS_REMANESC_NOTURNO +
+			curso.QT_VAGAS_REMANESC_EAD +
+			curso.QT_VAGAS_PROG_ESP_INTEGRAL +
+			curso.QT_VAGAS_PROG_ESP_MATUTINO +
+			curso.QT_VAGAS_PROG_ESP_VESPERTINO +
+			curso.QT_VAGAS_PROG_ESP_NOTURNO +
+			curso.QT_VAGAS_PROG_ESP_EAD;
+	}
+
+	function getTotalInscritos(curso) {
+		return curso.QT_INSC_VAGAS_NOVAS_INT +
+			curso.QT_INSC_VAGAS_NOVAS_MAT +
+			curso.QT_INSC_VAGAS_NOVAS_VESP +
+			curso.QT_INSC_VAGAS_NOVAS_NOT +
+			curso.QT_INSC_VAGAS_NOVAS_EAD +
+			curso.QT_INSC_VAGAS_REMAN_INT +
+			curso.QT_INSC_VAGAS_REMAN_MAT +
+			curso.QT_INSC_VAGAS_REMAN_VESP +
+			curso.QT_INSC_VAGAS_REMAN_NOT +
+			curso.QT_INSC_VAGAS_REMAN_EAD +
+			curso.QT_INSC_VAGAS_PROG_ESP_INT +
+			curso.QT_INSC_VAGAS_PROG_ESP_MAT +
+			curso.QT_INSC_VAGAS_PROG_ESP_VESP +
+			curso.QT_INSC_VAGAS_PROG_ESP_NOT +
+			curso.QT_INSC_VAGAS_PROG_ESP_EAD;
+	}	
+
+	function getConcorrencia(totalVagas, totalInscritos) {
+		var concorrencia = 0;
+		if (totalVagas > 0) {
+			concorrencia = totalInscritos/totalVagas;
+			concorrencia = parseFloat(new Number(concorrencia+'').toFixed(2));
+		}
+		return concorrencia;
 	}
 }
