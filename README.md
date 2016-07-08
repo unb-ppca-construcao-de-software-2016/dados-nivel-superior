@@ -4,6 +4,8 @@
 
 Repositório para artefatos do segundo trabalho da disciplina Construção de Software.
 
+<img src="http://ap.imagensbrasil.org/images/onde_estudar_2.md.jpg">
+
 ## Integrantes
 - [Alan Mazuco](https://github.com/alanMazuco)
 - [Alysson Ribeiro](https://github.com/alyssondsr)
