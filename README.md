@@ -11,7 +11,7 @@ Repositório para artefatos do segundo trabalho da disciplina Construção de So
 - [Rodrigo Vilela](https://github.com/rodrigovilela)
 
 ## Público alvo
-População que esteja em busca de um curso de graduação. Exemplo: egressos do Ensino Médio.
+O público-Alvo desta aplicação é formado por estudantes finalistas do ensino médio e superior, profissionais recém-formados ou em busca de reposicionamento de carreira. Hoje em dia, em um cenário cada vez mais competitivo, as pessoas têm de lidar com planejamento financeiro, gerenciamento do tempo, vida universitária, produtividade e qualidade de vida, como lidar com a ansiedade do pré-vestibular, como se preparar para o vestibular, como decidir a carreira, etc. O presente aplicativo pretende fornecer uma ajuda para esse público, que procura o melhor local para ingressar nesse ambiente.
 
 ## Problema a resolver
 Dificuldades que aqueles que pretendem ingressar em um curso de graduação encontram ao tentar localizar informações relevantes referentes aos cursos, tais como: instituições  de ensino superior (IES) ofertantes do curso desejado, número de vagas ofertadas e concorrência apresentada nas instituições, estados e regiões geográficas.
