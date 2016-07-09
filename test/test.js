@@ -7,7 +7,7 @@ var assert = require('chai').assert;
 describe('Curso', function() {
 	describe('find', function() {
 		it('deve retornar objeto curso com a expressao buscada que sejam de graduacao e ativos', function(){
-			assert(curso.find().and([
+			assert.equal(curso.find().and([
 				{CO_NIVEL_ACADEMICO: 1},
 				{CO_SITUACAO_CURSO: 1},
 				{$or:[
@@ -19,7 +19,6 @@ describe('Curso', function() {
 				CO_IES: 1,
 				CO_MUNICIPIO_CURSO: 1,
 				NO_CURSO: 1
-			})).equal(!null)})
-		});
+		})), !null})
 	});
 });
