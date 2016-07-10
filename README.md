@@ -59,4 +59,4 @@ O protótipo corresponde ao resultado de uma consulta realizada por um curso, cu
 * [Trello](https://trello.com/b/HqxCn7sP/projeto2-ppca-unb)
 
 ## Deploy
-[Acesse o exemplo aqui](https://ondeestudar.herokuapp.com/)
+[Acesse o site aqui](http://www.ondeestudar.net.br/)
