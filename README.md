@@ -4,7 +4,7 @@
 
 Repositório para artefatos do segundo trabalho da disciplina Construção de Software.
 
-<img src="http://ap.imagensbrasil.org/images/onde_estudar_2.md.jpg">
+<img src="https://github.com/rodolfocruzbsb/dados-nivel-superior/blob/master/imagem_site.png">
 
 ## Integrantes
 - [Alan Mazuco](https://github.com/alanMazuco)
