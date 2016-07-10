@@ -1,153 +1,241 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Onde Estudar (ondeestudar.net.br)">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="utf-8">
-<link rel="icon" type="image/png" href="/images/aluno.png">
-<title>Onde estudar?</title>
-<link rel="stylesheet" href="/css/tamanho.css">
+	<meta property="og:url"           content="http://www.ondeestudar.net.br" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="Onde Estudar" />
+	<meta property="og:description"   content="Onde Estudar - Aqui você vai encontraro lugar certo para fazer o seu curso superior" />
+	<meta property="og:image"         content="http://www.ondeestudar.net.br/images/aluno.png" />
 
-<link href="/css/site.min.css" rel="stylesheet" type="text/css">
+	
+	<title>Onde Estudar =)</title>
 
-<script>
-	(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id))
-			return;
-		js = d.createElement(s);
-		js.id = id;
-		js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.6&appId=243651819353536";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
-</script>
+	<link rel="shortcut icon" href="/images/aluno.png">
+	
+	<!-- Bootstrap itself -->
+	<link href="/3th-party/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<!-- Icons -->
+	<link href="/3th-party/font-awesome/css/font-awesome.min.css" rel="stylesheet"> 
+	<!-- Fonts -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700"> 
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="/css/styles.css">
+	
 
-<style type="text/css">
-#centro {
-	width: 544px;
-	height: 453px;
-	position: absolute;
-	top: 30%;
-	left: 50%;
-	margin-top: -260px;
-	margin-left: -272px;
-}
+	<!--[if lt IE 9]> <script src="/js/html5shiv.js"></script> <![endif]-->	
 
-#pac-input {
-	background: #eee;
-	padding: 5px;
-	border: 15 none;
-	font-weight: bolder;
-	font-size: 150%;
-}
+	<style type="text/css">
+		.back-to-top {
+		    cursor: pointer;
+		    position: fixed;
+		    bottom: 20px;
+		    right: 20px;
+		    display:none;
+		}
+	</style>
 
-#pesquisa-botao {
-	border: 1px solid #222;
-	color: #eee;
-	background: url(http://i.imgur.com/cz4sguf.png) no-repeat left #4591fa;
-	margin-left: -3px;
-	color: #fff;
-	font: 'trebuchet ms', trebuchet;
-	padding: 6px 6px 6px 20px;
-	border: 0 none;
-	font-weight: bold;
-	border-top-right-radius: 7px;
-	border-bottom-right-radius: 7px;
-	font-size: 150%;
-}
+	<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.6&appId=243651819353536";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 
-#pesquisa-botao:hover {
-	cursor: pointer;
-	background: url(http://i.imgur.com/cz4sguf.png) no-repeat left #2375E6;
-	# footer , #footer .container-fluid { background-color : #FFFFFF;
-	clear: both;
-}
-}
-</style>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-80307609-1', 'auto');
+	  ga('send', 'pageview');
 
-  ga('create', 'UA-80307609-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
+	</script>
 </head>
+
 <body>
-	<div class="body-content">
 
-		<div id="logo" align="center">
-			<img id="centroimg" src="/images/LOGO_2.png">
-		</div>
-		
-		<div id="search" align="center" style="margin-top: 40px;">
-			<form action="/search" method="post">
+<!-- Header -->
+<header class="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-push-2 text-center">
+				<h1>ONDE ESTUDAR</h1>				
+				<p class="lead">
+					Encontre aqui a Instituição de Ensino que você procura para estudar.
+				</p>								
 				
-				<input id="pac-input" name="chaveDaBusca" class="controls" type="text" placeholder="Procure seu curso aqui!" size="40"alt="informe o nome do curso, nome da instituicao ou nome da cidade.">
+				<form class="form" role="form" action="/search" method="post">
 				
-				<button id="pesquisa-botao" type="submit">Pesquisar</button>
-			</form>
-		</div>
-		
-		<div class="erros" align="center" style="margin-top: 40px;">
-			<%if(errosValidacao){%>		
-				<ul>
-					<% for(var i=0; i < errosValidacao.length; i++){ %>
-						<li><%= errosValidacao[i].msg %></li>
-					<%}%>
-				</ul>
-			<%}%>
-		</div>
-
-		<div id="video" align="center" style="margin-top: 40px;">
-			<iframe allowTransparency="true" frameborder="0" scrolling="no"
-				src="//www.youtube.com/embed/PyDz1u7ODEA?rel=0"
-				style="height: 380px;"></iframe>
-
-		</div>
-
-
-
-		<br> <br> <br> <br>
-
+					<div class="input-group">
+						<input type="text" class="form-control input-lg" id="inputChaveDaBusca" name="chaveDaBusca" placeholder="Digite o nome do Curso ou Instituição de Ensino ...">
+						<span class="input-group-btn">
+							<button class="btn btn-lg btn-default" type="submit">Buscar!</button>
+						</span>
+					</div><!-- /input-group -->
+															
+				</form>
+				
+			</div>			
+		</div>	
+		<div class="row">
+			<div class="col-lg-8 col-lg-push-2 text-center" align="center" style="margin-top: 40px;">
+				<%if(errosValidacao){%>		
+					<ul>
+						<% for(var i=0; i < errosValidacao.length; i++){ %>
+							<li><%= errosValidacao[i].msg %></li>
+						<%}%>
+					</ul>
+				<%}%>
+			</div>			
+		</div>	
+		<!-- <div class="row">
+			<div class="col-lg-12">				
+				<div id="illustration">
+					<img src="/images/ap-screenshot.png" alt="" >					
+				</div>
+			</div>
+		</div> -->
 	</div>
+</header>
+<!-- /Header -->
+	
+
+<!-- Content -->
+<main class="content">
+
+	<!-- Lead -->
+	<section class="container space-before space-after">
+
+		<!--BACK TO TOP -->
+		<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Voltar para o topo da página" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+	
+		<div class="row">
+			<div class="col-sm-10 col-sm-push-1" text-center>
+				<h1 class="text-center">Quem somos?</h1>
+			</div>
+		</div>		
+		<div class='row'>
+		    <div class='col-sm-2'></div>
+		    <div class='col-sm-8'>
+		        <div class="embed-responsive embed-responsive-16by9">
+		            <iframe src="http://www.youtube.com/embed/PyDz1u7ODEA?rel=0" allowfullscreen></iframe>
+		        </div>
+		    </div>
+		    <div class='col-sm-2'></div>
+		</div>
+	</section>
+	<!-- /Lead -->
 
 
 
-
-	<div id="footer">
-
-
-		<div class="container-fluid">
-			<div class="row-fluid">
-				<ul class="footerLinks">
-					<li class="copyright">PPCA 2016. Todos os direitos reservados</li>
-
-					<li class="separator">|</li>
-
-					<li><a href="" target="_blank">Termos de utilização</a></li>
-
-					<li class="separator">|</li>
-
-					<li><a href="" target="_blank">Sobre</a></li>
-
-					<li class="separator">|</li>
-
-					<li><div class="fb-like"
-							data-href="https://www.facebook.com/ondeestudarbr/"
-							data-layout="button_count" data-action="like"
-							data-show-faces="true" data-share="true"></div></li>
-
-				</ul>
+	<!-- Features -->
+	<section class="container space-before">
+		
+		<div class="row featurelist space-after">
+			<div class="col-md-5 col-sm-6 col-md-push-1 ">
+				<img class="img-feature img-responsive" src="/images/screen1.png" alt="Sample image">
+			</div>
+			<div class="col-md-5 col-md-push-1 col-sm-6">
+				<h2 class="space-before">Veja os detalhes do curso que procura dentro do <span class="text-muted">território nacional</span></h2>
+				<p>Dados como  o <strong>número de vagas</strong>, <strong>número de inscritos</strong> e <strong>concorrência</strong> por Instituição de Ensino, para te ajudar a tomar a melhor decisão ao escolher onde vai cursar seu nível superior.</p>
 			</div>
 		</div>
+	</section>
+	<!-- /Features -->
 
-	</div>
+</main>
 
+
+<footer id="footer" class="jumbotron">
+	<section class="container">
+		<div class="row">
+				<div class="col-md-5 col-md-push-1">
+					<h2>Compartilhe</h2>
+					<p>Se ajudamos você, deixe-nos ajudar seus amigos também!</p>					
+
+					<!-- AddToAny BEGIN -->										
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">					
+						<a class="a2a_button_facebook a2a_counter"></a>												
+						<a class="a2a_button_twitter a2a_counter"></a>
+						<a class="a2a_button_google_plus a2a_counter"></a>		
+						<a class="a2a_dd a2a_counter" href="https://www.addtoany.com/share?linkurl=http%3A%2F%2Fwww.ondeestudar.net.br%2F&amp;linkname=ONDE%20ESTUDAR"></a>			
+					</div>	
+					<br>				
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">					
+						<a class="a2a_button_facebook_like fb-like" data-href="https://www.facebook.com/ondeestudarbr/" data-layout="standard" data-show-faces="true"></a>
+					</div>
+					
+					<script>
+						var a2a_config = a2a_config || {};
+						a2a_config.linkname = "ONDE ESTUDAR";
+						a2a_config.linkurl = "http://www.ondeestudar.net.br/";
+						a2a_config.locale = "pt-BR";
+					</script>
+
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
+
+
+					<!-- Load Facebook SDK for JavaScript -->
+					<div id="fb-root"></div>
+					
+
+					<!-- Your like button code -->
+					
+					
+				</div>				
+				
+				<div id="fb-root"></div>
+				
+				<div class="col-md-5 col-md-push-1">
+					<h2>Precisa de ajuda?</h2>
+					<p>Para sugestões ou dúvidas sobre o nosso serviço, entre em contato conosco pelo email <a href="MAILTO:suporte@ondeestudar.net.br">suporte@ondeestudar.net.br</a>. </p>
+					<p>Caso deseje nos reportar algum bug, acesse: <a href="https://github.com/unb-ppca-construcao-de-software-2016/dados-nivel-superior/issues" target="_blank">GitHub</a> </p>
+				</div>
+		</div>	
+	</section>
+</footer>
+
+<p class="small text-muted text-center">Copyright &copy; 2016, PPCA. </p>
+<br>
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="/3th-party/jquery/jquery-2.2.4.min.js"></script>
+<script src="/js/template.js"></script>
+
+
+<script type="text/javascript">
+
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 50) {
+			$('#back-to-top').fadeIn();
+		} else {
+			$('#back-to-top').fadeOut();
+		}
+	});
+	
+	// scroll body to 0px on click
+	$('#back-to-top').click(function () {
+		$('#back-to-top').tooltip('hide');
+		$('body,html').animate({
+ 			scrollTop: 0
+		}, 800);
+		
+		return false;
+	});        	
+
+</script>
 
 
 
