@@ -121,7 +121,7 @@ db.once('open', function callback() {
 		IGC_CONTINUO: Number,
 		IGC_FAIXA: Number
 	});
-	var iesSchema = new mongoose.Schema({
+	var enadeSchema = new mongoose.Schema({
 		CO_CURSO: Number,
 		Conceito_Enade: Number,
 		Enade_Faixa: Number
