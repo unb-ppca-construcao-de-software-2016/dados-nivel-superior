@@ -1,4 +1,4 @@
-var schemas = require('../app/infra/connectionFactory');
+/*var schemas = require('../app/infra/connectionFactory');
 var curso = schemas.Curso;
 var rslt = [];
 var prmrgx = new RegExp('ciencia da computacao', 'i');
@@ -22,3 +22,4 @@ describe('Curso', function() {
 		})), !null})
 	});
 });
+*/
