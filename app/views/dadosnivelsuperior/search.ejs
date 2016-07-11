@@ -18,6 +18,7 @@ html, body {
 
 .controls {
 	margin-top: 10px;
+	margin-bottom: 10px;
 	border: 1px solid transparent;
 	border-radius: 2px 0 0 2px;
 	box-sizing: border-box;
@@ -27,15 +28,31 @@ html, body {
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
+#pesquisa-botao {
+	border: 1px solid #222;
+	color: #eee;
+	background: url(http://i.imgur.com/cz4sguf.png) no-repeat left #4591fa;
+	margin-left: -3px;
+	color: #fff;
+	font: 'trebuchet ms', trebuchet;
+	padding: 22px 12px 12px 20px;
+	border: 0 none;
+	font-weight: bold;
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+	font-size: 100%;
+}
+
+
 #pac-input {
-	background-color: #fff;
+	
 	font-family: Roboto;
 	font-size: 15px;
 	font-weight: 300;
 	margin-left: 12px;
 	padding: 0 11px 0 13px;
 	text-overflow: ellipsis;
-	width: 300px;
+	width: 250px;
 }
 
 #pac-input:focus {
@@ -62,36 +79,36 @@ html, body {
 	width: 345px;
 }
 
-#right-panel {
+#panel-pesquisa {
 	font-family: 'Roboto', 'sans-serif';
 	line-height: 30px;
 	padding-left: 10px;
 }
 
-#right-panel select, #right-panel input {
+#panel-pesquisa select, #panel-pesquisa input {
 	font-size: 15px;
 }
 
-#right-panel select {
+#panel-pesquisa select {
 	width: 100%;
 }
 
-#right-panel i {
+#panel-pesquisa i {
 	font-size: 12px;
 }
 
-#right-panel {
+#panel-pesquisa {
 	font-family: Arial, Helvetica, sans-serif;
 	position: absolute;
-	right: 5px;
-	top: 60%;
-	margin-top: -195px;
-	height: 330px;
-	width: 200px;
+	left: -5px;
+	top: 8%;
+	
+	
+	
 	padding: 5px;
 	z-index: 5;
-	border: 1px solid #999;
-	background: #fff;
+	
+	
 }
 
 #right-panel h2 {
@@ -162,18 +179,24 @@ li:nth-child(odd) {
 
 </head>
 <body>
-	<!--
-	<input id="pac-input" class="controls" type="text"
-		placeholder="Procure seu curso aqui!">
-	-->
+	
+	
+	
+	
 	<div id="map"></div>
-	<!--
-	<div id="right-panel">
-		<h2>Resultados</h2>
-		<ul id="places"></ul>
-		<button id="more">Mais resultados</button>
+	
+	
+	<div id="panel-pesquisa">
+		<div id="search" align="left">
+			<form action="/search" method="post">
+				
+				<input id="pac-input" name="chaveDaBusca" class="controls" type="text" placeholder="Nome do curso ou instituição..." size="40">
+				
+				<button id="pesquisa-botao" type="submit"></button>
+			</form>
+		</div>
 	</div>
-	-->
+	
 	<script>
 		// This example adds a search box to a map, using the Google Place Autocomplete
 		// feature. People can enter geographical searches. The search box will return a
