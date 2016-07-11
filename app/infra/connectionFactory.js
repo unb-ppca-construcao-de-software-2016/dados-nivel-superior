@@ -18,8 +18,8 @@ db.once('open', function callback() {
 		longitude: String
 	});
     
-    //Schema da collection curso
-    var cursoSchema = new mongoose.Schema({
+    	//Schema da collection curso
+    	var cursoSchema = new mongoose.Schema({
 		CO_IES: Number,
 		NO_IES: String,
 		CO_CATEGORIA_ADMINISTRATIVA: Number,
@@ -116,6 +116,18 @@ db.once('open', function callback() {
 		QT_INGRESSO_CURSO: Number,
 		QT_INGRESSO_VAGAS_NOVAS: Number
 	});
+	var iesSchema = new mongoose.Schema({
+		CO_IES: Number,
+		IGC_CONTINUO: Number,
+		IGC_FAIXA: Number
+	});
+	var iesSchema = new mongoose.Schema({
+		CO_CURSO: Number,
+		Conceito_Enade: Number,
+		Enade_Faixa: Number
+	});
+
+
 
 	var Curso = mongoose.model('curso', cursoSchema, 'curso');
 	var Coordenadas = mongoose.model('coordenadas', coordSchema, 'coordenadas');	
