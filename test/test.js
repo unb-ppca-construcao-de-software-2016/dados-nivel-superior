@@ -4,6 +4,7 @@ var rslt = [];
 var prmrgx = new RegExp('ciencia da computacao', 'i');
 
 var assert = require('chai').assert;
+
 describe('Curso', function() {
 	describe('find', function() {
 		it('deve retornar objeto curso com a expressao buscada que sejam de graduacao e ativos', function(){
@@ -19,6 +20,12 @@ describe('Curso', function() {
 				CO_IES: 1,
 				CO_MUNICIPIO_CURSO: 1,
 				NO_CURSO: 1
-		})), !null})
+			}), !null)
+		});
 	});
+	describe('naprem', function(){
+		it('deve substituir nao aplicavel no texto do resultado por Area basica de ingresso', function(){
+			assert.equal(naprem('qualquer coisa(Nâo Aplicável)'), 'qualquer coisa, área básica de ingresso')}
+		)}
+	);
 });
