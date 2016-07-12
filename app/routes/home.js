@@ -72,7 +72,7 @@ module.exports = function(app){
 				var cursosIES = [];
 			
 				instituicoes.forEach(function (instituicao) {
-					//console.log('IES: '+instituicao.CO_IES+' CURSO('+instituicao.CO_CURSO+'): '+instituicao.NO_CURSO);
+					console.log('IES: '+instituicao.CO_IES+' CURSO('+instituicao.CO_CURSO+'): '+instituicao.NO_CURSO);
 						var igc2 = getIGC(instituicao, igc);
 						if (igc2)
 							var igc2 = 'Faixa do Índice Geral de Cursos (IGC): '+igc2;
@@ -155,12 +155,11 @@ module.exports = function(app){
 		var igcRet = null;
 		for (var i = 0; i < igc.length; i++) {
 			if (instituicao.CO_IES == igc[i].CO_IES) {
-				igcRet = igc[i];
+				igcRet = igc[i].IGC_CONTINUO;
 				break;
 			}
-
 		}
-		return igcRet.IGC_FAIXA;
+		return igcRet;
 	}
 
 	function getCoordenada(instituicao, coordenadas) {
