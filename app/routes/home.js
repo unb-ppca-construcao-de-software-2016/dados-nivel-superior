@@ -35,6 +35,7 @@ module.exports = function(app){
 		var schemas = require('../infra/connectionFactory');
 		var Curso = schemas.Curso;
 		var Coordenadas = schemas.Coordenadas;
+		var Igc = schemas.Igc;
 		var resultado = [];
 		var paramRegex = new RegExp(chaveDaBusca, 'i');
 
@@ -63,6 +64,7 @@ module.exports = function(app){
 
 			//Busca as coordenadas para o municipio
      		Coordenadas.find({}, function(err, coordenadas){
+				Igc.find({}, function(err, igc){
 				if(err) return console.log(err);
 		
 				var coIES = null;
@@ -71,7 +73,14 @@ module.exports = function(app){
 			
 				instituicoes.forEach(function (instituicao) {
 					//console.log('IES: '+instituicao.CO_IES+' CURSO('+instituicao.CO_CURSO+'): '+instituicao.NO_CURSO);
-					
+						var igc2 = getIGC(instituicao, igc);
+						if (igc2)
+							var igc2 = 'Faixa do Índice Geral de Cursos (IGC): '+igc2;
+						else
+							var igc2 = 'NA'
+						if(err) return console.log(err);
+						//console.log('teste', igc2);		
+
 					//controle para construir apenas um objeto por IES/Municipio
 					if (coIES == instituicao.CO_IES && coMUNICIPIO == instituicao.CO_MUNICIPIO_CURSO) {
 						var vagas = getTotalVagas(instituicao);
@@ -114,11 +123,13 @@ module.exports = function(app){
 													nome: instituicao.NO_IES,
 													categoria: instituicao.DS_CATEGORIA_ADMINISTRATIVA,									
 													coord : {lat : latitude,  lng : longitude},
+													igc: igc2,
 													cursos: cursosIES}
 												);
 
 								coordenada.latitude = ''+(latitude-0.005);
 								coordenada.longitude = ''+(longitude-0.005);
+								console.log(resultado)
 
 							} else {
 
@@ -131,13 +142,26 @@ module.exports = function(app){
 						}
 					}
 				});
-				
 				res.render('dadosnivelsuperior/search', {resultado: resultado});
+	     	
+
 			});
+     		});
 		});
 				
 		
 	});
+	function getIGC(instituicao, igc) {
+		var igcRet = null;
+		for (var i = 0; i < igc.length; i++) {
+			if (instituicao.CO_IES == igc[i].CO_IES) {
+				igcRet = igc[i];
+				break;
+			}
+
+		}
+		return igcRet.IGC_FAIXA;
+	}
 
 	function getCoordenada(instituicao, coordenadas) {
 		var coordenadaRet = null;

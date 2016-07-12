@@ -227,6 +227,7 @@ li:nth-child(odd) {
 			resultado.push({nome:'<%= result.nome %>',
 							categoria:'<%= result.categoria %>',
 							coord : {lat : <%= result.coord.lat %>, lng : <%= result.coord.lng %>},
+							igc: '<%= result.igc %>',
 							cursos: cursos});						
 			<% }); %>
 			
@@ -245,8 +246,9 @@ li:nth-child(odd) {
 					+ '</div>'
 					+ '<h1 id="firstHeading" class="firstHeading">'+item.nome+'</h1>'
 					+ '<h3 id="firstHeading" class="firstHeading">'+item.categoria+'</h3>'
+					+ '<h3 id="firstHeading" class="firstHeading">'+item.igc+'</h3>'
 					+ '<div id="bodyContent">'
-					+ '<p><b>Cursos:</b></p>'
+					+ '<p><b>Cursos1:</b></p>'
 					+ '<ul>';
 
 				item.cursos.forEach(function (curso, indexCurso) {
@@ -267,6 +269,7 @@ li:nth-child(odd) {
 					+ '</div>'
 					+ '<h1 id="firstHeading" class="firstHeading">'+item.nome+'</h1>'
 					+ '<h3 id="firstHeading" class="firstHeading">'+item.categoria+'</h3>'
+					+ '<h3 id="firstHeading" class="firstHeading">'+item.igc+'</h3>'
 					+ '<div id="bodyContent">'
 					+ '<p><b>Cursos:</b></p>'
 					+ '<ul>';

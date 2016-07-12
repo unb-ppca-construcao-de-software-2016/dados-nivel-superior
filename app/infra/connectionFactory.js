@@ -116,7 +116,7 @@ db.once('open', function callback() {
 		QT_INGRESSO_CURSO: Number,
 		QT_INGRESSO_VAGAS_NOVAS: Number
 	});
-	var iesSchema = new mongoose.Schema({
+	var igcSchema = new mongoose.Schema({
 		CO_IES: Number,
 		IGC_CONTINUO: Number,
 		IGC_FAIXA: Number
@@ -130,7 +130,9 @@ db.once('open', function callback() {
 
 
 	var Curso = mongoose.model('curso', cursoSchema, 'curso');
-	var Coordenadas = mongoose.model('coordenadas', coordSchema, 'coordenadas');	
-	var my_schemas = {'Curso' : Curso, 'Coordenadas': Coordenadas};
+	var Coordenadas = mongoose.model('coordenadas', coordSchema, 'coordenadas');
+	var Igc = mongoose.model('igc', igcSchema, 'igc');
+	var Enade = mongoose.model('enade', enadeSchema, 'enadeSchema');
+	var my_schemas = {'Curso' : Curso, 'Coordenadas': Coordenadas, 'Igc':Igc, 'Enade': Enade};
 	module.exports = my_schemas;
 });
