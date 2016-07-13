@@ -72,14 +72,9 @@ module.exports = function(app){
 				var cursosIES = [];
 			
 				instituicoes.forEach(function (instituicao) {
-					console.log('IES: '+instituicao.CO_IES+' CURSO('+instituicao.CO_CURSO+'): '+instituicao.NO_CURSO);
-						var igc2 = getIGC(instituicao, igc);
-						if (igc2)
-							var igc2 = 'Faixa do Índice Geral de Cursos (IGC): '+igc2;
-						else
-							var igc2 = 'NA'
+					//console.log('IES: '+instituicao.CO_IES+' CURSO('+instituicao.CO_CURSO+'): '+instituicao.NO_CURSO);
+						var igc2 = 'Índice Geral de Cursos 2014 (IGC): '+getIGC(instituicao, igc);;
 						if(err) return console.log(err);
-						//console.log('teste', igc2);		
 
 					//controle para construir apenas um objeto por IES/Municipio
 					if (coIES == instituicao.CO_IES && coMUNICIPIO == instituicao.CO_MUNICIPIO_CURSO) {
@@ -129,7 +124,7 @@ module.exports = function(app){
 
 								coordenada.latitude = ''+(latitude-0.005);
 								coordenada.longitude = ''+(longitude-0.005);
-								console.log(resultado)
+								//console.log(resultado)
 
 							} else {
 
@@ -138,7 +133,7 @@ module.exports = function(app){
 
 						} else {
 
-							console.log('IES sem CO_MUNICIPIO_CURSO: '+instituicao.CO_IES);
+							//console.log('IES sem CO_MUNICIPIO_CURSO: '+instituicao.CO_IES);
 						}
 					}
 				});
@@ -152,7 +147,7 @@ module.exports = function(app){
 		
 	});
 	function getIGC(instituicao, igc) {
-		var igcRet = null;
+		var igcRet = 'NA';
 		for (var i = 0; i < igc.length; i++) {
 			if (instituicao.CO_IES == igc[i].CO_IES) {
 				igcRet = igc[i].IGC_CONTINUO;
