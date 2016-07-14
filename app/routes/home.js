@@ -65,57 +65,69 @@ module.exports = function(app){
 
 			//Busca as coordenadas para o municipio
      		Coordenadas.find({}, function(err, coordenadas){
-			Igc.find({}, function(err, igcs){
-				if(err) return console.log(err);
-		
 				var coIES = null;
 				var coMUNICIPIO = null;
 				var cursosIES = [];
+
+				Igc.find({}, function(err, igcs){
+					if(err) return console.log(err);
+					Enade.find({}, function(err, enades){
+					if(err) return console.log(err);
+
+		
 			
 				instituicoes.forEach(function (instituicao) {
+						
+
 					//console.log('IES: '+instituicao.CO_IES+' CURSO('+instituicao.CO_CURSO+'): '+instituicao.NO_CURSO);
 						var igc = 'Índice Geral de Cursos 2014 (IGC): '+getIGC(instituicao, igcs);
 						if(err) return console.log(err);
-
-					//controle para construir apenas um objeto por IES/Municipio
-					if (coIES == instituicao.CO_IES && coMUNICIPIO == instituicao.CO_MUNICIPIO_CURSO) {
-						var vagas = getTotalVagas(instituicao);
-						var inscritos = getTotalInscritos(instituicao);
-						cursosIES.push({
-							nome: instituicao.NO_CURSO, 
-							grau: instituicao.DS_GRAU_ACADEMICO,
-							vagas: vagas,
-							inscritos: inscritos,
-							concorrencia: getConcorrencia(vagas, inscritos)
-						});
-					} else {
-
-						coIES = instituicao.CO_IES;
 						
-						coMUNICIPIO = instituicao.CO_MUNICIPIO_CURSO;
-						
-						if (coMUNICIPIO) {
-							
-							cursosIES = [];
+						var enade = getENADE(instituicao, enades);
+						console.log(instituicao.CO_CURSO +' enade '+enade)
+
+
+						//controle para construir apenas um objeto por IES/Municipio
+						if (coIES == instituicao.CO_IES && coMUNICIPIO == instituicao.CO_MUNICIPIO_CURSO) {
 							var vagas = getTotalVagas(instituicao);
 							var inscritos = getTotalInscritos(instituicao);
-							
 							cursosIES.push({
 								nome: instituicao.NO_CURSO, 
 								grau: instituicao.DS_GRAU_ACADEMICO,
 								vagas: vagas,
 								inscritos: inscritos,
-								concorrencia: getConcorrencia(vagas, inscritos)
+								concorrencia: getConcorrencia(vagas, inscritos),
+								enade: enade
 							});
-							
-							var coordenada = getCoordenada(instituicao, coordenadas);
-							
-							if (coordenada) {
+						} else {
 
-								var latitude = parseFloat(coordenada.latitude.replace(",","."));
-								var longitude = parseFloat(coordenada.longitude.replace(",","."));
+							coIES = instituicao.CO_IES;
+						
+							coMUNICIPIO = instituicao.CO_MUNICIPIO_CURSO;
+						
+							if (coMUNICIPIO) {
+							
+								cursosIES = [];
+								var vagas = getTotalVagas(instituicao);
+								var inscritos = getTotalInscritos(instituicao);
+							
+								cursosIES.push({
+									nome: instituicao.NO_CURSO, 
+									grau: instituicao.DS_GRAU_ACADEMICO,
+									vagas: vagas,
+									inscritos: inscritos,
+									concorrencia: getConcorrencia(vagas, inscritos),
+									enade: enade
+								});
+							
+								var coordenada = getCoordenada(instituicao, coordenadas);
+							
+								if (coordenada) {
 
-								resultado.push({
+									var latitude = parseFloat(coordenada.latitude.replace(",","."));
+									var longitude = parseFloat(coordenada.longitude.replace(",","."));
+
+									resultado.push({
 													nome: instituicao.NO_IES,
 													categoria: instituicao.DS_CATEGORIA_ADMINISTRATIVA,									
 													coord : {lat : latitude,  lng : longitude},
@@ -123,11 +135,11 @@ module.exports = function(app){
 													cursos: cursosIES}
 												);
 
-								coordenada.latitude = ''+(latitude-0.005);
-								coordenada.longitude = ''+(longitude-0.005);
-								//console.log(resultado)
+									coordenada.latitude = ''+(latitude-0.005);
+									coordenada.longitude = ''+(longitude-0.005);
+									//console.log(resultado)
 
-							} else {
+								} else {
 
 								console.log('Coordenada do CO_MUNICIPIO_CURSO nao encontrada: '+instituicao.CO_MUNICIPIO_CURSO);
 							}
@@ -140,8 +152,8 @@ module.exports = function(app){
 				});
 				res.render('dadosnivelsuperior/search', {resultado: resultado});
 	     	
-
-			});
+					});
+				});
      		});
 		});
 				
@@ -154,8 +166,21 @@ module.exports = function(app){
 				igcRet = igcs[i].IGC_CONTINUO;
 				break;
 			}
+
 		}
 		return igcRet;
+	}
+
+	function getENADE(instituicao, enades) {
+		var enadeRet = 'N.A.';
+		for (var i = 0; i < enades.length; i++) {
+			console.log(i+ ' de ' +enades.length);
+			if (instituicao.CO_CURSO == enades[i].CO_CURSO) {
+				enadeRet = enades[i].Conceito_Enade;
+				break;
+			}
+		}
+		return enadeRet;
 	}
 
 	function getCoordenada(instituicao, coordenadas) {
