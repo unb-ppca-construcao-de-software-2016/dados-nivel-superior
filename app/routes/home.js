@@ -78,14 +78,13 @@ module.exports = function(app){
 		
 			
 				instituicoes.forEach(function (instituicao) {
-						
+					if(err) return console.log(err);
 
 					//console.log('IES: '+instituicao.CO_IES+' CURSO('+instituicao.CO_CURSO+'): '+instituicao.NO_CURSO);
 						var igc = 'Índice Geral de Cursos 2014 (IGC): '+getIGC(instituicao, igcs);
-						if(err) return console.log(err);
+
 						
 						var enade = getENADE(instituicao, enades);
-						console.log(instituicao.CO_CURSO +' enade '+enade)
 
 
 						//controle para construir apenas um objeto por IES/Municipio
@@ -147,7 +146,7 @@ module.exports = function(app){
 
 						} else {
 
-							//console.log('IES sem CO_MUNICIPIO_CURSO: '+instituicao.CO_IES);
+							console.log('IES sem CO_MUNICIPIO_CURSO: '+instituicao.CO_IES);
 						}
 					}
 				});
@@ -175,7 +174,6 @@ module.exports = function(app){
 	function getENADE(instituicao, enades) {
 		var enadeRet = 'Não Avaliado';
 		for (var i = 0; i < enades.length; i++) {
-			//console.log(i+ ' de ' +enades.length);
 			if (instituicao.CO_CURSO == enades[i].CO_CURSO) {
 				enadeRet = enades[i].Conceito_Enade;
 				break;
