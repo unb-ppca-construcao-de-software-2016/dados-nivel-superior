@@ -11,7 +11,8 @@ module.exports = function(app){
 	
 	app.post('/search', function(req, res){
 
-		var chaveDaBusca = req.body.chaveDaBusca;	
+		var chaveDaBusca = req.body.chaveDaBusca.trim();	
+		console.log("Pesquisando por: "+chaveDaBusca);
 				
 		req.assert('chaveDaBusca', 'Informe algum valor para realizar a pesquisa!').notEmpty();
 		
