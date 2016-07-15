@@ -172,9 +172,9 @@ module.exports = function(app){
 	}
 
 	function getENADE(instituicao, enades) {
-		var enadeRet = 'N.A.';
+		var enadeRet = 'Não Avaliado';
 		for (var i = 0; i < enades.length; i++) {
-			console.log(i+ ' de ' +enades.length);
+			//console.log(i+ ' de ' +enades.length);
 			if (instituicao.CO_CURSO == enades[i].CO_CURSO) {
 				enadeRet = enades[i].Conceito_Enade;
 				break;
