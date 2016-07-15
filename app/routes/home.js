@@ -11,7 +11,7 @@ module.exports = function(app){
 	
 	app.post('/search', function(req, res){
 
-		var chaveDaBusca = req.body.chaveDaBusca;	
+		var chaveDaBusca = req.body.chaveDaBusca.trim();	
 		console.log("Pesquisando por: "+chaveDaBusca);
 				
 		req.assert('chaveDaBusca', 'Informe algum valor para realizar a pesquisa!').notEmpty();
@@ -36,6 +36,7 @@ module.exports = function(app){
 		var schemas = require('../infra/connectionFactory');
 		var Curso = schemas.Curso;
 		var Coordenadas = schemas.Coordenadas;
+		var Igc = schemas.Igc;
 		var resultado = [];
 		var paramRegex = new RegExp(chaveDaBusca, 'i');
 
@@ -64,6 +65,7 @@ module.exports = function(app){
 
 			//Busca as coordenadas para o municipio
      		Coordenadas.find({}, function(err, coordenadas){
+				Igc.find({}, function(err, igc){
 				if(err) return console.log(err);
 		
 				var coIES = null;
@@ -72,7 +74,9 @@ module.exports = function(app){
 			
 				instituicoes.forEach(function (instituicao) {
 					//console.log('IES: '+instituicao.CO_IES+' CURSO('+instituicao.CO_CURSO+'): '+instituicao.NO_CURSO);
-					
+						var igc2 = 'Índice Geral de Cursos 2014 (IGC): '+getIGC(instituicao, igc);;
+						if(err) return console.log(err);
+
 					//controle para construir apenas um objeto por IES/Municipio
 					if (coIES == instituicao.CO_IES && coMUNICIPIO == instituicao.CO_MUNICIPIO_CURSO) {
 						var vagas = getTotalVagas(instituicao);
@@ -115,11 +119,13 @@ module.exports = function(app){
 													nome: instituicao.NO_IES,
 													categoria: instituicao.DS_CATEGORIA_ADMINISTRATIVA,									
 													coord : {lat : latitude,  lng : longitude},
+													igc: igc2,
 													cursos: cursosIES}
 												);
 
 								coordenada.latitude = ''+(latitude-0.005);
 								coordenada.longitude = ''+(longitude-0.005);
+								//console.log(resultado)
 
 							} else {
 
@@ -128,17 +134,29 @@ module.exports = function(app){
 
 						} else {
 
-							console.log('IES sem CO_MUNICIPIO_CURSO: '+instituicao.CO_IES);
+							//console.log('IES sem CO_MUNICIPIO_CURSO: '+instituicao.CO_IES);
 						}
 					}
 				});
-				
 				res.render('dadosnivelsuperior/search', {resultado: resultado});
+	     	
+
 			});
+     		});
 		});
 				
 		
 	});
+	function getIGC(instituicao, igc) {
+		var igcRet = 'NA';
+		for (var i = 0; i < igc.length; i++) {
+			if (instituicao.CO_IES == igc[i].CO_IES) {
+				igcRet = igc[i].IGC_CONTINUO;
+				break;
+			}
+		}
+		return igcRet;
+	}
 
 	function getCoordenada(instituicao, coordenadas) {
 		var coordenadaRet = null;
