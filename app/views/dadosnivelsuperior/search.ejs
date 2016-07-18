@@ -5,7 +5,96 @@
 <meta charset="utf-8">
 <link rel="icon" type="image/png" href="/images/aluno.png">
 <title>Onde estudar?</title>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+<script type="text/javascript">
+
+$(document).ready(function() {	
+
+	$('a[name=modal]').click(function(e) {
+		e.preventDefault();
+		
+		var id = $(this).attr('href');
+	
+		var maskHeight = $(document).height();
+		var maskWidth = $(window).width();
+	
+		$('#mask').css({'width':maskWidth,'height':maskHeight});
+
+		$('#mask').fadeIn(1000);	
+		$('#mask').fadeTo("slow",0.8);	
+	
+		//Get the window height and width
+		var winH = $(window).height();
+		var winW = $(window).width();
+              
+		$(id).css('top',  winH/2-$(id).height()/2);
+		$(id).css('left', winW/2-$(id).width()/2);
+	
+		$(id).fadeIn(2000); 
+	
+	});
+	
+	$('.window .close').click(function (e) {
+		e.preventDefault();
+		
+		$('#mask').hide();
+		$('.window').hide();
+	});		
+	
+	$('#mask').click(function () {
+		$(this).hide();
+		$('.window').hide();
+	});			
+	
+});
+
+</script>
+
+
+
+
+
 <style>
+
+a {color:#333; text-decoration:none}
+a:hover {color:#ccc; text-decoration:none}
+
+.link_normal{
+    color:blue; text-decoration:underline;
+}
+
+#boxes .window {
+ margin-left: 10px;
+  width:440px;
+  height:200px;
+  display:none;
+  z-index:9999;
+  padding:15px;
+  text-align: justify;
+}
+
+#boxes #dialog {
+  width:280px; 
+  height:345px;
+  padding:13px;
+  background-color:#ffffff;
+}
+
+
+
+
+.close{display:block; text-align:right;}
+
+
+
+
+
+
+
+
+
 html, body {
 	height: 100%;
 	margin: 0;
@@ -180,13 +269,24 @@ li:nth-child(odd) {
 </head>
 <body>
 	
+
+	
+	
+	<div id="map">
+	
+		
+	
+	</div>
 	
 	
 	
-	<div id="map"></div>
 	
 	
 	<div id="panel-pesquisa">
+	
+
+	
+	
 		<div id="search" align="left">
 			<form action="/search" method="post">
 				
@@ -194,7 +294,25 @@ li:nth-child(odd) {
 				
 				<button id="pesquisa-botao" type="submit"></button>
 			</form>
-		</div>
+			&nbsp;&nbsp;&nbsp;<a href="#dialog" name="modal">O que é IGC? </a>
+			
+			<div id="boxes">
+
+<div id="dialog" class="window">
+<a href="#" class="close">Fechar [X]</a><br>
+O IGC (Índice Geral de Cursos) é um indicador de qualidade que avalia as instituições de educação superior.
+É construído com base numa média ponderada das notas dos cursos de graduação e pós-graduação de cada instituição.
+O IGC varia de 0 a 5, sendo os valores inferiores a 2 considerados ruins.  
+Para saber mais acesse o portal do <a href="http://portal.inep.gov.br/educacao-superior/indicadores/indice-geral-de-cursos-igc" target="_blank" class="link_normal">INEP</a>
+
+
+</div>
+  
+
+</div>
+			
+			
+			
 	</div>
 	
 	<script>
