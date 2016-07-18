@@ -11,9 +11,21 @@ module.exports = function(app){
 	
 	app.post('/search', function(req, res){
 
-		var chaveDaBusca = req.body.chaveDaBusca.trim();	
-		console.log("Pesquisando por: "+chaveDaBusca);
-				
+		var chaveDaBusca = req.body.chaveDaBusca.trim().toLowerCase();
+		var mapObj = {
+           a:"[aáàãâ]",
+           e:"[eéê]",
+           i:"[ií]",
+           o:"[oôóõ]",
+           u:"[uú]",
+           c:"[cç]"
+        };
+
+        var re = new RegExp(Object.keys(mapObj).join("|"),"g");
+        chaveDaBusca = chaveDaBusca.replace(re, function(matched){
+            return mapObj[matched];
+        });	
+
 		req.assert('chaveDaBusca', 'Informe algum valor para realizar a pesquisa!').notEmpty();
 		
 		var erros = req.validationErrors();
