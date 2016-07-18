@@ -222,7 +222,7 @@ li:nth-child(odd) {
 			<% resultado.forEach(function (result, index) { %>
 			cursos = [];
 			<% result.cursos.forEach(function (curso, indexCurso) { %>
-			cursos.push({nome:'<%= curso.nome %>', grau:'<%= curso.grau %>', vagas:'<%= curso.vagas %>', inscritos:'<%= curso.inscritos %>', concorrencia:'<%= curso.concorrencia %>'});
+			cursos.push({nome:'<%= curso.nome %>', grau:'<%= curso.grau %>', vagas:'<%= curso.vagas %>', inscritos:'<%= curso.inscritos %>', concorrencia:'<%= curso.concorrencia %>', enade: '<%= curso.enade %>'});
 			<% }); %>	
 			resultado.push({nome:'<%= result.nome %>',
 							categoria:'<%= result.categoria %>',
@@ -281,9 +281,10 @@ li:nth-child(odd) {
 					'<li><a href="javascript:ReverseDisplay(\''+idDiv+'\')">'+curso.nome+
 					'('+curso.grau+')</a>' +
 					'<div id="'+idDiv+'" style="display:none;"> ' +
-					'<p>Número de vagas: <b>'+curso.vagas+'</b></p>'+
+					'<p>Número de vagas 2014: <b>'+curso.vagas+'</b></p>'+
 					'<p>Número de inscritos: <b>'+curso.inscritos+'</b></p>'+
 					'<p>Concorrência 2014: <b>'+curso.concorrencia+'</b></p>'+
+					'<p>Enade: <b>'+curso.enade+'</b></p>'+
 					'</div></li> ';
 				});
 

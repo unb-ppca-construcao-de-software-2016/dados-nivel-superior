@@ -132,7 +132,7 @@ db.once('open', function callback() {
 	var Curso = mongoose.model('curso', cursoSchema, 'curso');
 	var Coordenadas = mongoose.model('coordenadas', coordSchema, 'coordenadas');
 	var Igc = mongoose.model('igc', igcSchema, 'igc');
-	var Enade = mongoose.model('enade', enadeSchema, 'enadeSchema');
+	var Enade = mongoose.model('enade', enadeSchema, 'enade');
 	var my_schemas = {'Curso' : Curso, 'Coordenadas': Coordenadas, 'Igc':Igc, 'Enade': Enade};
 	module.exports = my_schemas;
 });
