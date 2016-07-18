@@ -3,55 +3,62 @@
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <meta charset="utf-8">
-<link rel="icon" type="image/png" href="/images/aluno.png">
 <title>Onde estudar?</title>
 
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+<link rel="shortcut icon" href="/images/aluno.png">
+
+<!-- Bootstrap itself -->
+<link href="/3th-party/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+<!-- Icons -->
+<link href="/3th-party/font-awesome/css/font-awesome.min.css" rel="stylesheet"> 
+
+<script src="/3th-party/jquery/jquery-2.2.4.min.js"></script>
+
 <script type="text/javascript">
 
-$(document).ready(function() {	
-
-	$('a[name=modal]').click(function(e) {
-		e.preventDefault();
+	$(document).ready(function() {	
+	
+		$('a[id=modal]').click(function(e) {
+			e.preventDefault();
+			
+			var id = $(this).attr('href');
 		
-		var id = $(this).attr('href');
+			var maskHeight = $(document).height();
+			var maskWidth = $(window).width();
+		
+			$('#mask').css({'width':maskWidth,'height':maskHeight});
 	
-		var maskHeight = $(document).height();
-		var maskWidth = $(window).width();
-	
-		$('#mask').css({'width':maskWidth,'height':maskHeight});
-
-		$('#mask').fadeIn(1000);	
-		$('#mask').fadeTo("slow",0.8);	
-	
-		//Get the window height and width
-		var winH = $(window).height();
-		var winW = $(window).width();
-              
-		$(id).css('top',  winH/2-$(id).height()/2);
-		$(id).css('left', winW/2-$(id).width()/2);
-	
-		$(id).fadeIn(2000); 
-	
+			$('#mask').fadeIn(1000);	
+			$('#mask').fadeTo("slow",0.8);	
+		
+			//Get the window height and width
+			var winH = $(window).height();
+			var winW = $(window).width();
+	              
+			$(id).css('top',  winH/2-$(id).height()/2);
+			$(id).css('left', winW/2-$(id).width()/2);
+		
+			$(id).fadeIn(2000); 
+		
+		});
+		
+		$('.window .close').click(function (e) {
+			e.preventDefault();
+			
+			$('#mask').hide();
+			$('.window').hide();
+		});		
+		
+		$('#mask').click(function () {
+			$(this).hide();
+			$('.window').hide();
+		});			
+		
 	});
-	
-	$('.window .close').click(function (e) {
-		e.preventDefault();
-		
-		$('#mask').hide();
-		$('.window').hide();
-	});		
-	
-	$('#mask').click(function () {
-		$(this).hide();
-		$('.window').hide();
-	});			
-	
-});
 
 </script>
-
 
 
 
@@ -83,16 +90,7 @@ a:hover {color:#ccc; text-decoration:none}
 }
 
 
-
-
 .close{display:block; text-align:right;}
-
-
-
-
-
-
-
 
 
 html, body {
@@ -189,7 +187,7 @@ html, body {
 #panel-pesquisa {
 	font-family: Arial, Helvetica, sans-serif;
 	position: absolute;
-	left: -5px;
+	left: 1px;
 	top: 8%;
 	
 	
@@ -286,32 +284,39 @@ li:nth-child(odd) {
 	
 
 	
-	
 		<div id="search" align="left">
-			<form action="/search" method="post">
+			<form action="/search" method="post"  class="form" role="form">
 				
-				<input id="pac-input" name="chaveDaBusca" class="controls" type="text" placeholder="Nome do curso ou instituição..." size="40">
-				
-				<button id="pesquisa-botao" type="submit"></button>
+				<div class="row">
+		    		<div class='col-sm-12'>
+						<div class="input-group">
+						<span class="input-group-addon"><a href="/"><i class="fa fa-home" aria-hidden="true"></i></a></span>
+							<input type="text" class="form-control" id="inputChaveDaBusca" name="chaveDaBusca" placeholder="Nome do curso ou instituição..."> 
+							<span class="input-group-btn"> <button class="btn btn-primary" type="submit">&nbsp;<i class="fa fa-search" aria-hidden="true"></i>&nbsp;</button> </span>
+						</div>
+					</div>
+				</div>
+
 			</form>
-			&nbsp;&nbsp;&nbsp;<a href="#dialog" name="modal">O que é IGC? </a>
+			
+			<div class="row">
+		    		<div class='col-sm-12'> 
+						<a href="#dialog" id="modal">O que é IGC? </a>
+						<!-- <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button> -->
+					</div>
+			</div>
 			
 			<div id="boxes">
 
-<div id="dialog" class="window">
-<a href="#" class="close">Fechar [X]</a><br>
-O IGC (Índice Geral de Cursos) é um indicador de qualidade que avalia as instituições de educação superior.
-É construído com base numa média ponderada das notas dos cursos de graduação e pós-graduação de cada instituição.
-O IGC varia de 0 a 5, sendo os valores inferiores a 2 considerados ruins.  
-Para saber mais acesse o portal do <a href="http://portal.inep.gov.br/educacao-superior/indicadores/indice-geral-de-cursos-igc" target="_blank" class="link_normal">INEP</a>
+				<div id="dialog" class="window">
+					<a href="#" class="close">Fechar [X]</a><br>
+					O IGC (Índice Geral de Cursos) é um indicador de qualidade que avalia as instituições de educação superior.
+					É construído com base numa média ponderada das notas dos cursos de graduação e pós-graduação de cada instituição.
+					O IGC varia de 0 a 5, sendo os valores inferiores a 2 são considerados ruins.  
+					Para saber mais acesse o portal do <a href="http://portal.inep.gov.br/educacao-superior/indicadores/indice-geral-de-cursos-igc" target="_blank" class="link_normal">INEP</a>
+				</div>
 
-
-</div>
-  
-
-</div>
-			
-			
+			</div>
 			
 	</div>
 	
@@ -358,30 +363,7 @@ Para saber mais acesse o portal do <a href="http://portal.inep.gov.br/educacao-s
 					icon : '/images/educa_marcador.png',
 					title : item.nome
 				});
-/*
-				var contentString = '<div id="content">'
-					+ '<div id="siteNotice">'
-					+ '</div>'
-					+ '<h1 id="firstHeading" class="firstHeading">'+item.nome+'</h1>'
-					+ '<h3 id="firstHeading" class="firstHeading">'+item.categoria+'</h3>'
-					+ '<h3 id="firstHeading" class="firstHeading">'+item.igc+'</h3>'
-					+ '<div id="bodyContent">'
-					+ '<p><b>Cursos1:</b></p>'
-					+ '<ul>';
 
-				item.cursos.forEach(function (curso, indexCurso) {
-					contentString = contentString + '<li><b>' +
-						curso.nome + '</b>(' + curso.grau + 
-						' - vagas:' + curso.vagas +
-						' inscritos:' + curso.inscritos +
-						' concorrência:' + curso.concorrencia + ')' + '</li>';
-				});
-
-				contentString = contentString 
-					+ '</ul>'
-					+ '</div>' 
-					+ '</div>';
-*/
 				var contentString = '<div id="content">'
 					+ '<div id="siteNotice">'
 					+ '</div>'
@@ -422,205 +404,6 @@ Para saber mais acesse o portal do <a href="http://portal.inep.gov.br/educacao-s
 
 			});
 
-			/*
-			
-			var unb = {
-				lat : -15.7633,
-				lng : -47.8702
-			};
-			var ceub = {
-				lat : -15.7670,
-				lng : -47.8957
-			};
-			var ucb = {
-				lat : -15.8658,
-				lng : -48.0328
-			};
-
-			var contentString = '<div id="content">'
-					+ '<div id="siteNotice">'
-					+ '</div>'
-					+ '<h1 id="firstHeading" class="firstHeading">Universidade de Brasília - UnB</h1>'
-					+ '<div id="bodyContent">'
-					+ '<p><b>Cursos:</b></p>'
-					+ '<ul><li>Matematica(Vagas: 30, Concorrencia: 10/1, Conceito ENADE: 5)</li> '
-					+ '<li>Medicina(Vagas: 20, Concorrencia: 100/1, Conceito ENADE: 7)</li> '
-					+ '<li>Pedagogia(Vagas: 40, Concorrencia: 7/1, Conceito ENADE: 4)</li> '
-					+ '<li>Zootecnia(Vagas: 50, Concorrencia: 12/1, Conceito ENADE: 6)</li></ul>'
-					+ '</div>' + '</div>';
-			var contentString2 = '<div id="content">'
-					+ '<div id="siteNotice">'
-					+ '</div>'
-					+ '<h1 id="firstHeading" class="firstHeading">Centro Universitario de Brasília - CEUB</h1>'
-					+ '<div id="bodyContent">'
-					+ '<p><b>Medicina</b></p>'
-					+ '<ul><li>Número de vagas ofertadas para vestibular: <b>30</b></li> '
-					+ '<li>Número de vagas ofertadas para SISU: <b>30</b></li> '
-					+ '<li>Concorrência no vestibular: <b>200 candidatos/vaga</b></li> '
-					+ '<li>Concorrência no SISU: <b>100 candidatos/vaga</b></li>'
-					+ '<li>Taxa de desistência para ingressos via vestibular: <b>1%</b></li>'
-					+ '<li>Taxa de desistência para ingressos via SISU: <b>2%</b></li>'
-					+ '<li>Conceito ENADE: <b>7</b></li>'
-					+ '<li><p><a href="http://guiadoestudante.abril.com.br/universidades/saude-e-bem-estar/medicina-centro-universitario-de-brasilia-281070.shtml" target="_blank">Mais sobre o curso</a></p>'
-					+ '<p><a href="http://guiadoestudante.abril.com.br/profissoes/saude/medicina-690586.shtml" target="_blank">Mais sobre a profissão</a></p></li>'
-					+ '<li>*Dados referentes ao ano de 2015</li></ul>'
-					+ '</div>' + '</div>';
-			var contentString3 = '<div id="content">'
-					+ '<div id="siteNotice">'
-					+ '</div>'
-					+ '<h1 id="firstHeading" class="firstHeading">Universidade Catolica de Brasília - UCB</h1>'
-					+ '<div id="bodyContent">'
-					+ '<p><b>Cursos:</b></p>'
-					+ '<ul><li><a href="javascript:ReverseDisplay(\'uniquename1\')">Matematica</a> '
-					+ '<div id="uniquename1" style="display:none;"> '
-					+ '<p>Número de vagas ofertadas para vestibular: <b>30</b></p> '
-					+ '<p>Número de vagas ofertadas para SISU: <b>30</b></p> '
-					+ '<p>Concorrência no vestibular: <b>200 candidatos/vaga</b></p> '
-					+ '<p>Concorrência no SISU: <b>100 candidatos/vaga</b></p>'
-					+ '<p>Taxa de desistência para ingressos via vestibular: <b>1%</b></p>'
-					+ '<p>Taxa de desistência para ingressos via SISU: <b>2%</b></p>'
-					+ '<p>Conceito ENADE: <b>7</b></p>'
-					+ '</div></li> '
-					+ '<li><a href="javascript:ReverseDisplay(\'uniquename2\')">Medicina</a> '
-					+ '<div id="uniquename2" style="display:none;"> '
-					+ '<p>Número de vagas ofertadas para vestibular: <b>30</b></p> '
-					+ '<p>Número de vagas ofertadas para SISU: <b>30</b></p> '
-					+ '<p>Concorrência no vestibular: <b>200 candidatos/vaga</b></p> '
-					+ '<p>Concorrência no SISU: <b>100 candidatos/vaga</b></p>'
-					+ '<p>Taxa de desistência para ingressos via vestibular: <b>1%</b></p>'
-					+ '<p>Taxa de desistência para ingressos via SISU: <b>2%</b></p>'
-					+ '<p>Conceito ENADE: <b>7</b></p>'
-					+ '</div></li> '
-					+ '<li><a href="javascript:ReverseDisplay(\'uniquename3\')">Pedagogia</a> '
-					+ '<div id="uniquename3" style="display:none;"> '
-					+ '<p>Número de vagas ofertadas para vestibular: <b>30</b></p> '
-					+ '<p>Número de vagas ofertadas para SISU: <b>30</b></p> '
-					+ '<p>Concorrência no vestibular: <b>200 candidatos/vaga</b></p> '
-					+ '<p>Concorrência no SISU: <b>100 candidatos/vaga</b></p>'
-					+ '<p>Taxa de desistência para ingressos via vestibular: <b>1%</b></p>'
-					+ '<p>Taxa de desistência para ingressos via SISU: <b>2%</b></p>'
-					+ '<p>Conceito ENADE: <b>7</b></p>'
-					+ '</div></li> '
-					+ '<li><a href="javascript:ReverseDisplay(\'uniquename4\')">Zootecnia</a> '
-					+ '<div id="uniquename4" style="display:none;"> '
-					+ '<p>Número de vagas ofertadas para vestibular: <b>30</b></p> '
-					+ '<p>Número de vagas ofertadas para SISU: <b>30</b></p> '
-					+ '<p>Concorrência no vestibular: <b>200 candidatos/vaga</b></p> '
-					+ '<p>Concorrência no SISU: <b>100 candidatos/vaga</b></p>'
-					+ '<p>Taxa de desistência para ingressos via vestibular: <b>1%</b></p>'
-					+ '<p>Taxa de desistência para ingressos via SISU: <b>2%</b></p>'
-					+ '<p>Conceito ENADE: <b>7</b></p>'
-					+ '<p><a href="http://guiadoestudante.abril.com.br/universidades/ciencias-biologicas-e-da-terra/zootecnia-upis-faculdades-integradas-248535.shtml" target="_blank">Mais sobre o curso</a></p>'
-					+ '<p><a href="http://guiadoestudante.abril.com.br/profissoes/meio-ambiente-ciencias-agrarias/zootecnia-687893.shtml" target="_blank">Mais sobre a profissão</a></p>'
-					+ '</div></li> </ul>' + '</div>' + '</div>';
-
-			var infowindow = new google.maps.InfoWindow({
-				content : contentString,
-				maxWidth : 400
-			});
-			var infowindow2 = new google.maps.InfoWindow({
-				content : contentString2,
-				maxWidth : 400
-			});
-			var infowindow3 = new google.maps.InfoWindow({
-				content : contentString3,
-				maxWidth : 400
-			});
-
-			var marker = new google.maps.Marker({
-				position : unb,
-				map : map,
-				icon : '/images/educa_marcador.png',
-				title : 'Universidade de Brasília - UnB'
-			});
-			marker.addListener('click', function() {
-				infowindow.open(map, marker);
-			});
-			var marker2 = new google.maps.Marker({
-				position : ceub,
-				map : map,
-				icon : '/images/educa_marcador.png',
-				title : 'Centro Universitario de Brasília - CEUB'
-			});
-			marker2.addListener('click', function() {
-				infowindow2.open(map, marker2);
-			});
-			var marker3 = new google.maps.Marker({
-				position : ucb,
-				map : map,
-				icon : '/images/educa_marcador.png',
-				title : 'Universidade Catolica de Brasília - UCB'
-			});
-			marker3.addListener('click', function() {
-				infowindow3.open(map, marker3);
-			});
-			
-			*/
-
-			/*
-			// Create the search box and link it to the UI element.
-			var input = document.getElementById('pac-input');
-			var searchBox = new google.maps.places.SearchBox(input);
-			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-			// Bias the SearchBox results towards current map's viewport.
-			map.addListener('bounds_changed', function() {
-				searchBox.setBounds(map.getBounds());
-			});
-
-			var markers = [];
-			// Listen for the event fired when the user selects a prediction and retrieve
-			// more details for that place.
-			searchBox.addListener('places_changed', function() {
-				var places = searchBox.getPlaces();
-
-				if (places.length == 0) {
-					return;
-				}
-
-				// Clear out the old markers.
-				markers.forEach(function(marker) {
-					marker.setMap(null);
-				});
-				markers = [];
-
-				// For each place, get the icon, name and location.
-				var bounds = new google.maps.LatLngBounds();
-				places.forEach(function(place) {
-					var icon = {
-						url : place.icon,
-						size : new google.maps.Size(71, 71),
-						origin : new google.maps.Point(0, 0),
-						anchor : new google.maps.Point(17, 34),
-						scaledSize : new google.maps.Size(25, 25)
-					};
-
-					// Create a marker for each place.
-					markers.push(new google.maps.Marker({
-						map : map,
-						icon : icon,
-						title : place.name,
-						position : place.geometry.location
-					}));
-
-					if (place.geometry.viewport) {
-						// Only geocodes have viewport.
-						bounds.union(place.geometry.viewport);
-					} else {
-						bounds.extend(place.geometry.location);
-					}
-				});
-				map.fitBounds(bounds);
-			});
-			*/
-			/*
-			var service = new google.maps.places.PlacesService(map);
-			service.nearbySearch({
-				location : unb,
-				radius : 500,
-				type : [ 'store' ]
-			}, processResults);
-			*/
 		}
 
 		function processResults(results, status, pagination) {
@@ -665,23 +448,13 @@ Para saber mais acesse o portal do <a href="http://portal.inep.gov.br/educacao-s
 					anchor : new google.maps.Point(17, 34),
 					scaledSize : new google.maps.Size(25, 25)
 				};
-				/*
-				var marker = new google.maps.Marker({
-				  map: map,
-				  icon: image,
-				  title: place.name,
-				  position: place.geometry.location
-				});
-				 */
+				
 				placesList.innerHTML += '<li>' + place.name + '</li>';
 
-				//bounds.extend(place.geometry.location);
 			}
 			map.fitBounds(bounds);
 		}
 	</script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?language=pt-BR&key=AIzaSyAaOpMtN454GfUSKhLwSduchIfLuZgEoxw&libraries=places&callback=initAutocomplete"
-		async defer></script>
+	<script src="https://maps.googleapis.com/maps/api/js?language=pt-BR&key=AIzaSyAaOpMtN454GfUSKhLwSduchIfLuZgEoxw&libraries=places&callback=initAutocomplete" async defer></script>
 </body>
 </html>
