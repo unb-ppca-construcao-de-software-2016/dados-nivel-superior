@@ -191,10 +191,8 @@ html, body {
 	position: absolute;
 	left: 1px;
 	top: 18%;
-	
 	padding: 5px;
 	z-index: 5;
-	
 }
 
 #panel-o-que-pesquisei {
@@ -202,10 +200,8 @@ html, body {
 	position: absolute;
 	left: 1px;
 	top: 10%;
-	
 	padding: 5px;
 	z-index: 5;
-	
 }
 
 #right-panel h2 {
@@ -255,6 +251,11 @@ li {
 
 li:nth-child(odd) {
 	background-color: #fcfcfc;
+}
+
+div.limited500px {
+    width:500px;
+    margin: auto;
 }
 </style>
 <script>
@@ -315,13 +316,11 @@ li:nth-child(odd) {
 		<div id="search" align="left">
 			<form action="/search" method="post"  class="form" role="form">
 				
-				<div class="row">
-		    		<div class='col-sm-12'>
-						<div class="input-group">
+	    		<div class='limited500px'>
+					<div class="input-group">
 						<span class="input-group-addon"><a href="/"><i class="fa fa-home" aria-hidden="true"></i></a></span>
-							<input type="text" class="form-control" id="inputChaveDaBusca" name="chaveDaBusca" placeholder="Nome do curso ou instituição..." > 
-							<span class="input-group-btn"> <button class="btn btn-primary" type="submit">&nbsp;<i class="fa fa-search" aria-hidden="true"></i>&nbsp;</button> </span>
-						</div>
+						<input type="text" class="form-control" id="inputChaveDaBusca" name="chaveDaBusca" placeholder="Nome do curso ou instituição..." > 
+						<span class="input-group-btn"> <button class="btn btn-primary" type="submit">&nbsp;<i class="fa fa-search" aria-hidden="true"></i>&nbsp;</button> </span>
 					</div>
 				</div>
 
