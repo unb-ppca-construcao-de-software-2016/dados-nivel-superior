@@ -190,13 +190,21 @@ html, body {
 	font-family: Arial, Helvetica, sans-serif;
 	position: absolute;
 	left: 1px;
-	top: 8%;
-	
-	
+	top: 18%;
 	
 	padding: 5px;
 	z-index: 5;
 	
+}
+
+#panel-o-que-pesquisei {
+	font-family: Arial, Helvetica, sans-serif;
+	position: absolute;
+	left: 1px;
+	top: 10%;
+	
+	padding: 5px;
+	z-index: 5;
 	
 }
 
@@ -293,17 +301,16 @@ li:nth-child(odd) {
 	
 	<div id="map">
 	
-		
 	
 	</div>
-	
-	
-	
+	<%if(chaveDaBusca){%>	
+		<div id="panel-o-que-pesquisei">
+			<strong>Última pesquisa:</strong> <i><%= chaveDaBusca%></i>
+		</div>
+	<%}%>
 	
 	
 	<div id="panel-pesquisa">
-	
-
 	
 		<div id="search" align="left">
 			<form action="/search" method="post"  class="form" role="form">
@@ -312,7 +319,7 @@ li:nth-child(odd) {
 		    		<div class='col-sm-12'>
 						<div class="input-group">
 						<span class="input-group-addon"><a href="/"><i class="fa fa-home" aria-hidden="true"></i></a></span>
-							<input type="text" class="form-control" id="inputChaveDaBusca" name="chaveDaBusca" placeholder="Nome do curso ou instituição..."> 
+							<input type="text" class="form-control" id="inputChaveDaBusca" name="chaveDaBusca" placeholder="Nome do curso ou instituição..." > 
 							<span class="input-group-btn"> <button class="btn btn-primary" type="submit">&nbsp;<i class="fa fa-search" aria-hidden="true"></i>&nbsp;</button> </span>
 						</div>
 					</div>
@@ -327,6 +334,7 @@ li:nth-child(odd) {
 			</div>
 			
 			
+		</div>
 	</div>
 
 	<script>
