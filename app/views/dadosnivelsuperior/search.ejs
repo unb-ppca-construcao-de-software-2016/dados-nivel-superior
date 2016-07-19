@@ -16,6 +16,8 @@
 
 <script src="/3th-party/jquery/jquery-2.2.4.min.js"></script>
 
+<script src="/3th-party/bootstrap/js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
 
 	$(document).ready(function() {	
@@ -267,7 +269,26 @@ li:nth-child(odd) {
 </head>
 <body>
 	
-
+	<!-- Modal -->
+	<div class="modal fade" id="myModalIGC" tabindex="-1" role="dialog" aria-labelledby="myModalIGCLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalIGCLabel">O que é IGC?</h4>
+	      </div>
+	      <div class="modal-body">
+	        O IGC (Índice Geral de Cursos) é um indicador de qualidade que avalia as instituições de educação superior.
+			É construído com base numa média ponderada das notas dos cursos de graduação e pós-graduação de cada instituição.
+			O IGC varia de 0 a 5, sendo os valores inferiores a 2 são considerados ruins.  
+			Para saber mais acesse o portal do <a href="http://portal.inep.gov.br/educacao-superior/indicadores/indice-geral-de-cursos-igc" target="_blank" class="link_normal">INEP</a>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	
 	
 	<div id="map">
@@ -300,27 +321,21 @@ li:nth-child(odd) {
 			</form>
 			
 			<div class="row">
-		    		<div class='col-sm-12'> 
-						<a href="#dialog" id="modal">O que é IGC? </a>
-						<!-- <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button> -->
-					</div>
+	    		<div class='col-sm-12'> 
+					<a href="javascript: abrirModalIGC();">O que é IGC? </a>
+				</div>
 			</div>
 			
-			<div id="boxes">
-
-				<div id="dialog" class="window">
-					<a href="#" class="close">Fechar [X]</a><br>
-					O IGC (Índice Geral de Cursos) é um indicador de qualidade que avalia as instituições de educação superior.
-					É construído com base numa média ponderada das notas dos cursos de graduação e pós-graduação de cada instituição.
-					O IGC varia de 0 a 5, sendo os valores inferiores a 2 são considerados ruins.  
-					Para saber mais acesse o portal do <a href="http://portal.inep.gov.br/educacao-superior/indicadores/indice-geral-de-cursos-igc" target="_blank" class="link_normal">INEP</a>
-				</div>
-
-			</div>
 			
 	</div>
-	
+
 	<script>
+	
+		function abrirModalIGC(){
+			$('#myModalIGC').modal({
+				  keyboard: false
+			});
+		} 
 		// This example adds a search box to a map, using the Google Place Autocomplete
 		// feature. People can enter geographical searches. The search box will return a
 		// pick list containing a mix of places and predicted search terms.
