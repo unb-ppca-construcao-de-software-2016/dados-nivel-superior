@@ -1,16 +1,24 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://ondeestudar:ppca1521@ds023684.mlab.com:23684/ondeestudar?authMechanism=SCRAM-SHA-1');
 
-//mongoose.connect('mongodb://127.0.0.1/test');
+if (!process.env.NODE_ENV) {
+	
+	mongoose.connect('mongodb://127.0.0.1/test');
+	console.log("Conectando no ambiente de DESENVOLVIMENTO");
+}else if (process.env.NODE_ENV == 'production') {
+	
+	console.log("Conectando no ambiente de PRODUÇÃO. URL: "+process.env.MONGODB_URL);
+	mongoose.connect(process.env.MONGODB_URL);
+}
+
 
 
 var db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'connection error:'));
 
 db.once('open', function callback() {
-	console.log('mongoose opened');
-
+	
 	//Schema da collection coordenadas
 	var coordSchema = new mongoose.Schema({
 		co_municipio_curso: String,
@@ -18,8 +26,8 @@ db.once('open', function callback() {
 		longitude: String
 	});
     
-    	//Schema da collection curso
-    	var cursoSchema = new mongoose.Schema({
+	//Schema da collection curso
+	var cursoSchema = new mongoose.Schema({
 		CO_IES: Number,
 		NO_IES: String,
 		CO_CATEGORIA_ADMINISTRATIVA: Number,
@@ -116,11 +124,13 @@ db.once('open', function callback() {
 		QT_INGRESSO_CURSO: Number,
 		QT_INGRESSO_VAGAS_NOVAS: Number
 	});
+	
 	var igcSchema = new mongoose.Schema({
 		CO_IES: Number,
 		IGC_CONTINUO: Number,
 		IGC_FAIXA: Number
 	});
+	
 	var enadeSchema = new mongoose.Schema({
 		CO_CURSO: Number,
 		Conceito_Enade: Number,
@@ -131,9 +141,14 @@ db.once('open', function callback() {
 
 
 	var Curso = mongoose.model('curso', cursoSchema, 'curso');
+	
 	var Coordenadas = mongoose.model('coordenadas', coordSchema, 'coordenadas');
+	
 	var Igc = mongoose.model('igc', igcSchema, 'igc');
+	
 	var Enade = mongoose.model('enade', enadeSchema, 'enade');
+	
 	var my_schemas = {'Curso' : Curso, 'Coordenadas': Coordenadas, 'Igc':Igc, 'Enade': Enade};
+	
 	module.exports = my_schemas;
 });
