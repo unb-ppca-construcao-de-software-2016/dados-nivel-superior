@@ -14,6 +14,16 @@
 
 	
 	<title>Onde Estudar =)</title>
+	
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<style type="text/css">
+#container {
+    min-width: 500px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+		</style>
+
 
 	<link rel="shortcut icon" href="/images/aluno.png">
 	
@@ -67,10 +77,245 @@
 
 		ga('create', 'UA-80307609-1', 'auto');
 		ga('send', 'pageview');
-	</script>
+		</script>
+		
+		
+				<script type="text/javascript">
+$(function () {
+    var data = {
+            'Região Norte': {
+                'Fundação Universidade Federal de Rondônia': {
+                   'Noncommunicable diseases': '19369',
+                    'Injuries': '7.6',
+                    'Communicable & other Group I': '2545'
+                },
+                ' Universidade Federal do Acre': {
+                    'Noncommunicable diseases': '79653',
+                    'Injuries': '37.2',
+                    'Communicable & other Group I': '2140'
+                },
+                '  Universidade Federal do Pará': {
+                    'Communicable & other Group I': '7698',
+                    'Injuries': '29',
+                    'Noncommunicable diseases': '229242'
+                },
+                ' Universidade Federal do Amazonas': {
+                    'Injuries': '24',
+                    'Noncommunicable diseases': '131724',
+                    'Communicable & other Group I': '5466'
+                },
+                ' Fund. Universidade Federal do Tocantins ': {
+                    'Injuries': '18.8',
+                    'Noncommunicable diseases': '63665',
+                    'Communicable & other Group I': '3380'
+                }
+            },
+            'Região Nordeste': {
+                ' Universidade Federal da Paraíba ': {
+                    'Communicable & other Group I': '7790',
+                    'Noncommunicable diseases': '141864',
+                    'Injuries': '18.2'
+                },
+                ' Universidade Fed. do Rio Grande do Norte': {
+                    'Communicable & other Group I': '7593',
+                    'Noncommunicable diseases': '152044',
+                    'Injuries': '20'
+                },
+                ' Universidade Federal da Bahia ': {
+                    'Communicable & other Group I': '7432',
+                    'Noncommunicable diseases': '158843',
+                    'Injuries': '21.4'
+                },
+                ' Universidade Federal de Pernambuco': {
+                    'Communicable & other Group I': '7259',
+                    'Noncommunicable diseases': '44240',
+                    'Injuries': '6.1'
+                },
+                ' Universidade Federal do Maranhão': {
+                    'Injuries': '0.9',
+                    'Communicable & other Group I': '6054',
+                    'Noncommunicable diseases': '5616'
+                              
+                }
+            },
+            'Região Sudeste': {
+                ' Universidade Fed. Fluminense ': {
+                    'Communicable & other Group I': '9323',
+                    'Injuries': '28.4',
+                    'Noncommunicable diseases': '264850'
+                },
+                ' Universidade Fed. do Rio de Janeiro': {
+                    'Noncommunicable diseases': '307742',
+                    'Communicable & other Group I': '9347',
+                    'Injuries': '32.9'
+                },
+                ' Universidade Fed. de Minas Gerais': {
+                    'Communicable & other Group I': '6740',
+                    'Injuries': '54.2',
+                    'Noncommunicable diseases': '365163'
+                },
+                ' Universidade Fed. do Espírito Santo': {
+                    'Noncommunicable diseases': '31479',
+                    'Communicable & other Group I': '5220',
+                    'Injuries': '6'
+                },
+                ' Universidade Fed. de Uberlândia': {
+                    'Communicable & other Group I': '4668',
+                    'Noncommunicable diseases': '76923',
+                    'Injuries': '16.5'
+                }
+                
+                
+            },
+            'Região Sul': {
+                ' Universidade Tecnológica Federal do Paraná': {
+                    'Communicable & other Group I': '7966',
+                    'Noncommunicable diseases': '215614',
+                    'Injuries': '27.1'
+                },
+                ' Universidade Federal de Santa Catarina': {
+                    'Injuries': '5',
+                    'Communicable & other Group I': '6571',
+                    'Noncommunicable diseases': '32982'
+                },
+                ' Universidade Federal do Paraná': {
+                    'Injuries': '20.3',
+                    'Noncommunicable diseases': '123585',
+                    'Communicable & other Group I': '6096'
+                },
+                ' Universidade Federal do Rio Grande do Sul': {
+                    'Injuries': '7.8',
+                    'Noncommunicable diseases': '43530',
+                    'Communicable & other Group I': '5581'
+                },
+                ' Universidade Federal de Santa Maria': {
+                    'Noncommunicable diseases': '30749',
+                    'Injuries': '6',
+                    'Communicable & other Group I': '5153'
+                }
+                
+                
+            },
+            'Região Centro Oeste': {
+                ' Universidade de Brasília ': {
+                    'Injuries': '24.7',
+                    'Noncommunicable diseases': '206269',
+                    'Communicable & other Group I': '8365'
+                },
+                ' Universidade Fed. de Goiás': {
+                    'Injuries': '9.8',
+                    'Communicable & other Group I': '6445',
+                    'Noncommunicable diseases': '62926'
+                },
+                ' Universidade Fed. de Mato Grosso': {
+                    'Injuries': '19.9',
+                    'Noncommunicable diseases': '110315',
+                    'Communicable & other Group I': '5549'
+                },
+                ' Universidade Fed. Mato Grosso do Sul': {
+                    'Injuries': '4.4',
+                    'Noncommunicable diseases': '23734',
+                    'Communicable & other Group I': '5360'
+                },
+                ' Fund. Universidade Fed. da Grande Dourados': {
+                    'Communicable & other Group I': '2155',
+                    'Injuries': '9',
+                    'Noncommunicable diseases': '19419'
+                }
+                
+            }
+        },
+        points = [],
+        regionP,
+        regionVal,
+        regionI = 0,
+        countryP,
+        countryI,
+        causeP,
+        causeI,
+        region,
+        country,
+        cause,
+        causeName = {
+            'Communicable & other Group I': 'Vagas',
+            'Noncommunicable diseases': 'Inscritos',
+            'Injuries': 'Candidato por Vaga'
+        };
+
+    for (region in data) {
+        if (data.hasOwnProperty(region)) {
+            regionVal = 0;
+            regionP = {
+                id: 'id_' + regionI,
+                name: region,
+                color: Highcharts.getOptions().colors[regionI]
+            };
+            countryI = 0;
+            for (country in data[region]) {
+                if (data[region].hasOwnProperty(country)) {
+                    countryP = {
+                        id: regionP.id + '_' + countryI,
+                        name: country,
+                        parent: regionP.id
+                    };
+                    points.push(countryP);
+                    causeI = 0;
+                    for (cause in data[region][country]) {
+                        if (data[region][country].hasOwnProperty(cause)) {
+                            causeP = {
+                                id: countryP.id + '_' + causeI,
+                                name: causeName[cause],
+                                parent: countryP.id,
+                                value: Math.round(+data[region][country][cause])
+                            };
+                            regionVal += causeP.value;
+                            points.push(causeP);
+                            causeI = causeI + 1;
+                        }
+                    }
+                    countryI = countryI + 1;
+                }
+            }
+            regionP.value = Math.round(regionVal / countryI);
+            points.push(regionP);
+            regionI = regionI + 1;
+        }
+    }
+    $('#container').highcharts({
+        series: [{
+            type: 'treemap',
+            layoutAlgorithm: 'squarified',
+            allowDrillToNode: true,
+            animationLimit: 1000,
+            dataLabels: {
+                enabled: false
+            },
+            levelIsConstant: false,
+            levels: [{
+                level: 1,
+                dataLabels: {
+                    enabled: true
+                },
+                borderWidth: 3
+            }],
+            data: points
+        }],
+        subtitle: {
+            text: 'Click em Região, Click Universidade desejada e passe o mouse sobre: vaga, Inscritos ou Candidato por vaga '
+        },
+        title: {
+            text: 'Relaçao Candidato por Vaga - TOP 5'
+        }
+    });
+});
+	
+	
+		</script>
+	
+	
 </head>
 
-<body>
+
 <!-- <nav class="navbar navbar-default navbar-fixed-top">
  <div class="container-fluid">
      <div class="navbar-header">
@@ -100,10 +345,10 @@
         <li class="dropdown active">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gráficos <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <!-- <li class="active" ><a href="/graficos/candidatovaga/regiao">Candidato/Vaga por Região</a></li> -->
+             <li><a href="/graficos/candidatovaga/regiao">Candidato/Vaga por Região</a></li> 
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">Instituição</li>
-            <li><a href="/graficos/notaconceitoenade">Notas Conceito Enade</a></li>
+            <li class="active"><a href="/graficos/notaconceitoenade">Notas Conceito Enade</a></li>
           </ul>
         </li>
         <li><a href="/sobre">Sobre</a></li>
@@ -123,17 +368,7 @@
 					Encontre aqui a Instituição de Ensino que você procura para estudar.
 				</p>								
 				
-				<form class="form" role="form" action="/search" method="post">
-				
-					<div class="input-group">
-						<input type="text" class="form-control input-lg" id="inputChaveDaBusca" name="chaveDaBusca" placeholder="Digite o nome do Curso ou Instituição de Ensino ...">
-						<span class="input-group-btn">
-							<button class="btn btn-lg btn-default" type="submit">Buscar!</button>
-						</span>
-					</div><!-- /input-group -->
-															
-				</form>
-				
+								
 			</div>			
 		</div>	
 		<div class="row">
@@ -168,9 +403,7 @@
 
 		<!--BACK TO TOP -->
 		<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Voltar para o topo da página" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
-		ADICIONAR GRAFICO [candidatovaga-por-regiao] AQUI<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		
 	</section>
 	<!-- /Lead -->
 
@@ -180,52 +413,7 @@
 </main>
 
 
-<footer id="footer" class="jumbotron">
-	<section class="container">
-		<div class="row">
-				<div class="col-md-5 col-md-push-1">
-					<h2>Compartilhe</h2>
-					<p>Se ajudamos você, deixe-nos ajudar seus amigos também!</p>					
 
-					<!-- AddToAny BEGIN -->										
-					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">					
-						<a class="a2a_button_facebook a2a_counter"></a>												
-						<a class="a2a_button_twitter a2a_counter"></a>
-						<a class="a2a_button_google_plus a2a_counter"></a>		
-						<a class="a2a_dd a2a_counter" href="https://www.addtoany.com/share?linkurl=http%3A%2F%2Fwww.ondeestudar.net.br%2F&amp;linkname=ONDE%20ESTUDAR"></a>			
-					</div>	
-					<br>				
-					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">					
-						<a class="a2a_button_facebook_like fb-like" data-href="https://www.facebook.com/ondeestudarbr/" data-layout="standard" data-show-faces="true"></a>
-					</div>
-					
-					<script>
-						var a2a_config = a2a_config || {};
-						a2a_config.linkname = "ONDE ESTUDAR";
-						a2a_config.linkurl = "http://www.ondeestudar.net.br/";
-						a2a_config.locale = "pt-BR";
-					</script>
-
-					<script async src="https://static.addtoany.com/menu/page.js"></script>
-					<!-- AddToAny END -->
-
-
-					<!-- Load Facebook SDK for JavaScript -->
-					<div id="fb-root"></div>
-					
-
-				</div>				
-				
-				<div id="fb-root"></div>
-				
-				<div class="col-md-5 col-md-push-1">
-					<h2>Precisa de ajuda?</h2>
-					<p>Para sugestões ou dúvidas sobre o nosso serviço, entre em contato conosco pelo email <a href="MAILTO:ondeestudarppca2016@gmail.com">ondeestudarppca2016@gmail.com</a>. </p>
-					<p>Caso deseje nos reportar algum bug, acesse: <a href="https://github.com/unb-ppca-construcao-de-software-2016/dados-nivel-superior/issues" target="_blank">GitHub</a> </p>
-				</div>
-		</div>	
-	</section>
-</footer>
 
 <p class="small text-muted text-center">Copyright &copy; 2016, PPCA. v0.0.1</p>
 <br>
@@ -257,7 +445,12 @@
 	});        	
 
 </script>
-
+<body>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/heatmap.js"></script>
+<script src="https://code.highcharts.com/modules/treemap.js"></script>
+<div id="container"></div>
+<br><br><br><br>
 
 
 </body>
