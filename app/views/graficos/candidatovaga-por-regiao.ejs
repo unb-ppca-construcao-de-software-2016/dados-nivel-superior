@@ -100,9 +100,9 @@
         <li class="dropdown active">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gráficos <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class="active" ><a href="/graficos/candidatovaga/regiao">Candidato/Vaga por Região</a></li>
+            <!-- <li class="active" ><a href="/graficos/candidatovaga/regiao">Candidato/Vaga por Região</a></li> -->
             <li role="separator" class="divider"></li>
-            <li class="dropdown-header">Curso</li>
+            <li class="dropdown-header">Instituição</li>
             <li><a href="/graficos/notaconceitoenade">Notas Conceito Enade</a></li>
           </ul>
         </li>
@@ -139,11 +139,12 @@
 		<div class="row">
 			<div class="col-lg-8 col-lg-push-2 text-center" align="center" style="margin-top: 40px;">
 				<%if(errosValidacao){%>		
-					<ul>
-						<% for(var i=0; i < errosValidacao.length; i++){ %>
-							<li><%= errosValidacao[i].msg %></li>
-						<%}%>
-					</ul>
+					<% for(var i=0; i < errosValidacao.length; i++){ %>
+						<div class="alert alert-danger alert-dismissible" role="alert">
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						  <strong>Ops!</strong> <%= errosValidacao[i].msg %>
+						</div>
+					<%}%>
 				<%}%>
 			</div>			
 		</div>	
@@ -219,14 +220,14 @@
 				
 				<div class="col-md-5 col-md-push-1">
 					<h2>Precisa de ajuda?</h2>
-					<p>Para sugestões ou dúvidas sobre o nosso serviço, entre em contato conosco pelo email <a href="MAILTO:suporte@ondeestudar.net.br">suporte@ondeestudar.net.br</a>. </p>
+					<p>Para sugestões ou dúvidas sobre o nosso serviço, entre em contato conosco pelo email <a href="MAILTO:ondeestudarppca2016@gmail.com">ondeestudarppca2016@gmail.com</a>. </p>
 					<p>Caso deseje nos reportar algum bug, acesse: <a href="https://github.com/unb-ppca-construcao-de-software-2016/dados-nivel-superior/issues" target="_blank">GitHub</a> </p>
 				</div>
 		</div>	
 	</section>
 </footer>
 
-<p class="small text-muted text-center">Copyright &copy; 2016, PPCA. </p>
+<p class="small text-muted text-center">Copyright &copy; 2016, PPCA. v0.0.1</p>
 <br>
 
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
