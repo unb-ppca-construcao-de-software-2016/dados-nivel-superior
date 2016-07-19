@@ -11,8 +11,6 @@ module.exports = function(app){
 
 		var nodemailer = require('nodemailer');
 		
-		var transporter = nodemailer.createTransport('smtps://ondeestudarppca2016@gmail.com:naoseiondeestudar@smtp.gmail.com');
-		
 		var email = req.body;
 		
 		req.assert('nome', 'Nome é obrigatória').notEmpty();
@@ -39,13 +37,35 @@ module.exports = function(app){
 		mensagem = mensagem + "---------------------------------------<br>";
 		mensagem = mensagem + email.mensagem.replace(/\n/g, '<br>');
 		
-		var mailOptions = {
-		    from: '"Onde Estudar" <'+email.email+'>', // sender address 
-		    to: 'ondeestudarppca2016@gmail.com', // list of receivers 
-		    subject: '[CONTATO] '+email.assunto, // Subject line 
-		    text: mensagem, // plaintext body 
-		    html: mensagem // html body 
-		};
+		
+
+		if (!process.env.NODE_ENV) {
+			var mailOptions = {
+					from: '"Onde Estudar" <'+email.email+'>', // sender address 
+					to: 'ondeestudarppca2016@gmail.com', // list of receivers 
+					subject: '[DEV-CONTATO] '+email.assunto, // Subject line 
+					text: mensagem, // plaintext body 
+					html: mensagem // html body 
+			};
+			
+			var transporter = nodemailer.createTransport('smtps://seuemail@gmail.com:suasenha@smtp.gmail.com');
+			console.log("Conectando no servidor SMTP de DESENVOLVIMENTO");
+		}else if (process.env.NODE_ENV == 'production') {
+			
+			var mailOptions = {
+					from: '"Onde Estudar" <'+email.email+'>', // sender address 
+					to: 'ondeestudarppca2016@gmail.com', // list of receivers 
+					subject: '[CONTATO] '+email.assunto, // Subject line 
+					text: mensagem, // plaintext body 
+					html: mensagem // html body 
+			};
+			
+			console.log("Conectando no servidor SMTP de PRODUÇÃO. URL: "+process.env.SMTP_URL);
+			var transporter = nodemailer.createTransport(process.env.SMTP_URL);
+		}else{
+			
+			res.render('outros/contato', {errosValidacaoContato: [ { param: 'Erro', msg: 'Mensagem não enviada por não ter servidor SMTP configurado neste ambiente!' } ], errosValidacao: {}, email:{}});
+		}
 		
 		transporter.sendMail(mailOptions, function(error, info){
 		    if(error){
