@@ -96,7 +96,10 @@ module.exports = function(app){
 						var igc = 'Índice Geral de Cursos 2014 (IGC): '+getIGC(instituicao, igcs);
 
 						
-						var enade = getENADE(instituicao, enades);
+						var enade = getENADE(instituicao, enades).Conceito_Enade;
+						if (enade == undefined)
+							enade = 'Não Avaliado'
+						var ano = getENADE(instituicao, enades).ano;
 
 
 						//controle para construir apenas um objeto por IES/Municipio
@@ -109,7 +112,8 @@ module.exports = function(app){
 								vagas: vagas,
 								inscritos: inscritos,
 								concorrencia: getConcorrencia(vagas, inscritos),
-								enade: enade
+								enade: enade,
+								ano: ano
 							});
 						} else {
 
@@ -129,7 +133,8 @@ module.exports = function(app){
 									vagas: vagas,
 									inscritos: inscritos,
 									concorrencia: getConcorrencia(vagas, inscritos),
-									enade: enade
+									enade: enade,
+									ano: ano
 								});
 							
 								var coordenada = getCoordenada(instituicao, coordenadas);
@@ -151,15 +156,15 @@ module.exports = function(app){
 									coordenada.longitude = ''+(longitude-0.005);
 									//console.log(resultado)
 
-								} else {
+								} //else {
 
-								console.log('Coordenada do CO_MUNICIPIO_CURSO nao encontrada: '+instituicao.CO_MUNICIPIO_CURSO);
-							}
+								//console.log('Coordenada do CO_MUNICIPIO_CURSO nao encontrada: '+instituicao.CO_MUNICIPIO_CURSO);
+							//}
 
-						} else {
+						} //else {
 
-							console.log('IES sem CO_MUNICIPIO_CURSO: '+instituicao.CO_IES);
-						}
+							//console.log('IES sem CO_MUNICIPIO_CURSO: '+instituicao.CO_IES);
+						//}
 					}
 				});
 				res.render('dadosnivelsuperior/search', {resultado: resultado});
@@ -184,14 +189,14 @@ module.exports = function(app){
 	}
 
 	function getENADE(instituicao, enades) {
-		var enadeRet = 'Não Avaliado';
+		var enadeRet = '';
 		for (var i = 0; i < enades.length; i++) {
 			if (instituicao.CO_CURSO == enades[i].CO_CURSO) {
-				enadeRet = enades[i].Conceito_Enade;
+				enadeRet = enades[i];
 				break;
 			}
 		}
-		return enadeRet;
+		return {ano:enadeRet.Ano , Conceito_Enade:enadeRet.Conceito_Enade};
 	}
 
 	function getCoordenada(instituicao, coordenadas) {

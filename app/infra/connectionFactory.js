@@ -124,7 +124,8 @@ db.once('open', function callback() {
 	var enadeSchema = new mongoose.Schema({
 		CO_CURSO: Number,
 		Conceito_Enade: Number,
-		Enade_Faixa: Number
+		Enade_Faixa: Number,
+		Ano: Number
 	});
 
 
