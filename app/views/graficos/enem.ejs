@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author"      content="Onde Estudar (www.ondeestudar.net.br)">
+
+	<meta property="og:url"           content="http://www.ondeestudar.net.br" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="Onde Estudar" />
+	<meta property="og:description"   content="Onde Estudar - Aqui você vai encontrar o lugar certo para fazer o seu curso superior" />
+	<meta property="og:image"         content="http://www.ondeestudar.net.br/images/aluno.png" />
+
+	
+	<title>Onde Estudar =)</title>
+	
+        <style type="text/css">
+            ${demo.css}
+        </style>
+
+	<link rel="shortcut icon" href="/images/aluno.png">
+	
+	<!-- Bootstrap itself -->
+	<link href="/3th-party/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<!-- Icons -->
+	<link href="/3th-party/font-awesome/css/font-awesome.min.css" rel="stylesheet"> 
+	<!-- Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"> 
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="/css/styles.css">
+	
+	<!--[if lt IE 9]> <script src="/js/html5shiv.js"></script> <![endif]-->	
+
+	<style type="text/css">
+		.back-to-top {
+		    cursor: pointer;
+		    position: fixed;
+		    bottom: 20px;
+		    right: 20px;
+		    display:none;
+		}
+	</style>
+
+	<script>
+		
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.6&appId=243651819353536";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
+	<script>
+	 
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script',
+				'https://www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', 'UA-80307609-1', 'auto');
+		ga('send', 'pageview');
+		</script>
+		
+	
+	
+</head>
+
+
+<!-- <nav class="navbar navbar-default navbar-fixed-top">
+ <div class="container-fluid">
+     <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <i class="fa fa-home" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</nav> -->
+
+
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Onde Estudar?</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gráficos <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/graficos/candidatovaga/regiao">Candidato/Vaga por Região</a></li> 
+            <li role="separator" class="divider"></li>
+            <li class="active"><a href="/graficos/enem">ENEM</a></li>
+            <li><a href="/graficos/notaconceitoenade">Notas Conceito Enade</a></li>
+          </ul>
+        </li>
+        <li><a href="/sobre">Sobre</a></li>
+        <li><a href="/contato">Contato</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<!-- Header -->
+<header class="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-push-2 text-center">
+				<h1>ONDE ESTUDAR</h1>				
+				<p class="lead">
+					Encontre aqui a Instituição de Ensino que você procura para estudar.
+				</p>								
+				
+								
+			</div>			
+		</div>	
+		<div class="row">
+			<div class="col-lg-8 col-lg-push-2 text-center" align="center" style="margin-top: 40px;">
+				<%if(errosValidacao){%>		
+					<% for(var i=0; i < errosValidacao.length; i++){ %>
+						<div class="alert alert-danger alert-dismissible" role="alert">
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						  <strong>Ops!</strong> <%= errosValidacao[i].msg %>
+						</div>
+					<%}%>
+				<%}%>
+			</div>			
+		</div>	
+		<!-- <div class="row">
+			<div class="col-lg-12">				
+				<div id="illustration">
+					<img src="/images/ap-screenshot.png" alt="" >					
+				</div>
+			</div>
+		</div> -->
+	</div>
+</header>
+<!-- /Header -->
+	
+
+<!-- Content -->
+<main class="content">
+
+	<!-- Lead -->
+	<section class="container space-before space-after">
+
+		<!--BACK TO TOP -->
+		<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Voltar para o topo da página" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+		
+	</section>
+	<!-- /Lead -->
+
+    <div id="container"></div>
+
+
+</main>
+
+
+
+
+<p class="small text-muted text-center">Copyright &copy; 2016, PPCA. v0.0.1</p>
+<br>
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="/3th-party/jquery/jquery-2.2.4.min.js"></script>
+<script src="/3th-party/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/template.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/heatmap.js"></script>
+<script src="https://code.highcharts.com/modules/treemap.js"></script>
+
+
+<script type="text/javascript">
+
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 50) {
+			$('#back-to-top').fadeIn();
+		} else {
+			$('#back-to-top').fadeOut();
+		}
+	});
+	
+	// scroll body to 0px on click
+	$('#back-to-top').click(function () {
+		$('#back-to-top').tooltip('hide');
+		$('body,html').animate({
+ 			scrollTop: 0
+		}, 800);
+		
+		return false;
+	});  
+
+    $(function () {
+                // Create the chart
+                $('#container').highcharts({
+                    chart: {
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'TOP 10 ENEM - Média por Escola Estados: SP, RJ, DF, MG, PE. [Fonte: <a href="http://portal.inep.gov.br" target="_blank">INEP</a>]',
+                        useHTML: true
+                    },
+                    subtitle: {
+                        text: 'Click no Estado para visualizar as Escolas.'
+                    },
+                    credits: {
+                        text: 'Ondeestudar.net.br',
+                        href: 'http://www.ondeestudar.net.br'
+                    },
+                    plotOptions: {
+                        series: {
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.name}: {point.y:.1f}'
+                            }
+                        }
+                    },
+
+                    tooltip: {
+                        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                    },
+                    series: [{
+                        name: 'Brands',
+                        colorByPoint: true,
+                        data: [{
+                            name: 'Distrito Federal',
+                           y: 19,
+                            drilldown: 'Distrito Federal'
+                        }, {
+                            name: 'São Paulo',
+                            y: 22,
+                            drilldown: 'São Paulo'
+                        }, {
+                            name: 'Rio de Janeiro',
+                            y: 21,
+                            drilldown: 'Rio de Janeiro'
+                        }, {
+                            name: 'Minas Gerais',
+                            y: 20,
+                            drilldown: 'Minas Gerais'
+                        }, {
+                            name: 'Pernambuco',
+                            y: 18,
+                            drilldown: 'Pernambuco'
+                        }
+                        ]
+                    }],
+                    drilldown: {
+                        series: [{
+                            name: 'Distrito Federal',
+                            id: 'Distrito Federal',
+                            data: [
+                                ['COL OLIMPO', 697.02],
+                                ['COL OLIMPO AGUAS CLARAS', 673.97],
+                                ['COL IDEAL', 672.15],
+                                ['COL PODION', 660.39],
+                                ['CED SIGMA', 648.66],
+                                ['CED SIGMA - ASA NORTE', 647.30],
+                                ['COL GALOIS', 646.59],
+                                ['COL ALUB', 646.17],
+                                ['COC BRASILIA', 627.38],
+                                ['COL SAG. CORACAO DE MARIA', 627.03]
+                            ]
+                        }, {
+                            name: 'São Paulo',
+                            id: 'São Paulo',
+                            data: [
+                                ['OBJETIVO COLEGIO INTEG.', 742.96],
+                                ['OBJETIVO INTEG. MOGI DAS CRUZES ', 718.66],
+                                ['VERTICE COLEGIO  UND. II', 710.99],
+                                ['SEB COC UNIDADE ALVARES C.', 701.70],
+                                ['ANGLO LEONARDO DA VINCI', 701.11],
+                                ['MOBILE COLEGIO', 700.84],
+                                ['SANTA CRUZ COLEGIO', 694.08],
+                                ['VILLARE COLEGIO', 691.95],
+                                ['BANDEIRANTES COLEGIO EFM', 689.40],
+                                ['OBJETIVO DO LITORAL', 688.45]
+                            
+                            ]
+                        }, {
+                            name: 'Rio de Janeiro',
+                            id: 'Rio de Janeiro',
+                            data: [
+                                ['PONTO DE ENSINO RJ', 720.73],
+                                ['PONTO DE ENSINO Niteroi', 711.36],
+                                ['COL DE SAO BENTO', 704.94],
+                                ['COLEGIO SANTO AGOSTINHO', 693.91],
+                                ['INSTITUTO GAYLUSSAC', 687.23],
+                                ['COLEGIO IPIRANGA', 684.78],
+                                ['COLEGIO SANTO INACIO', 684.68],
+                                ['COLEGIO SANTO AGOSTINHO - NL', 683.48],
+                                ['COLEGIO CRUZEIRO-CENTRO', 682.40],
+                                ['SISTEMA ELITE DE ENSINO', 678.49]
+                            ]
+                        }, {
+                            name: 'Minas Gerais',
+                            id: 'Minas Gerais',
+                            data: [
+                                ['COLEGIO BERNOULLI ', 730.33],
+                                ['COLEGIO ELITE VALE DO ACO', 719.81],
+                                ['COLEGUIUM', 719.71],
+                                ['COLEGIO SANTO ANTONIO', 711.95],
+                                ['COLEGIO SANTO AGOSTINHO', 697.91],
+                                ['COL DE APLICACAO DA UFV', 693.32],
+                                ['COLEGIO SANTO AGOSTINHO Nova lima', 692.43],
+                                ['COLEGIO MAGNUM ', 696.91],
+                                ['COLEGIO SANTA MARCELINA', 690.68],
+                                ['COLEGIO LOYOLA', 689.55]
+                            ]
+                        }, {
+                            name: 'Pernambuco',
+                            id: 'Pernambuco',
+                            data: [
+                                ['COLEGIO MOTIVO UND II', 684.97],
+                                ['COLEGIO EQUIPE', 684.08],
+                                ['COLEGIO COGNITIVO', 682.34],
+                                ['COLEGIO FAZER CRESCER ', 681.62],
+                                ['COLEGIO DE APLICACAO UFPE', 674.65],
+                                ['GRUPO GENESE DE ENSINO', 658.85],
+                                ['COLEGIO 17 DE AGOSTO', 655.45],
+                                ['ESCOLA DE APL. DO RECIFE ', 644.80],
+                                ['GRUPO GENESE DE ENSINO', 639.62],
+                                ['COLEGIO NUCLEO', 631.94]
+                            ]
+                        }]
+                    }
+                });
+            });      	
+
+</script>
+<body>
+
+</body>
+</html>
