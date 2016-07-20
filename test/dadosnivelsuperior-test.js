@@ -5,7 +5,7 @@
 var express = require('../config/express')();
 var request = require('supertest')(express);
 
-describe('#Test para funcionalidades de Curso', function() {
+describe('#Test para funcionalidades da App', function() {
 
 
 	it('#buscando listagem para o curso ciências da computação', function(done) {
