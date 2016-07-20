@@ -51,9 +51,9 @@ O protótipo corresponde ao resultado de uma consulta realizada por um curso, cu
 
 - Primeira versão funcional com conjunto mínimo de funcionalidades e video de divulgação do serviço
 
-### 15/07/16 
+### 20/07/16 [Entrega da versão para avaliação \o/ ] 
 
-- Entrega final para este ciclo do projeto.
+- Entrega final da versão de avaliação.
 
 ## Ferramentas de apoio
 * [Trello](https://trello.com/b/HqxCn7sP/projeto2-ppca-unb)
