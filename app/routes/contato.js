@@ -27,6 +27,10 @@ module.exports = function(app){
 				html: function(){			
 					res.status(400).render('outros/contato', 
 							{errosValidacaoContato: erros, errosValidacao: {}, email: email});
+				}, 
+				
+				json: function(){
+					res.status(400).json(erros);
 				}
 			});
 
@@ -42,14 +46,14 @@ module.exports = function(app){
 		if (!process.env.NODE_ENV) {
 			var mailOptions = {
 					from: '"Onde Estudar" <'+email.email+'>', // sender address 
-					to: 'ondeestudarppca2016@gmail.com', // list of receivers 
+					to: 'ondeestudarppca2016.test@gmail.com', // list of receivers 
 					subject: '[DEV-CONTATO] '+email.assunto, // Subject line 
 					text: mensagem, // plaintext body 
 					html: mensagem // html body 
 			};
 			
-			var transporter = nodemailer.createTransport('smtps://seuemail@gmail.com:suasenha@smtp.gmail.com');
 			console.log("Conectando no servidor SMTP de DESENVOLVIMENTO");
+			var transporter = nodemailer.createTransport('smtps://ondeestudarppca2016.test@gmail.com:estudaronde@smtp.gmail.com');
 		}else if (process.env.NODE_ENV == 'production') {
 			
 			var mailOptions = {
@@ -71,6 +75,7 @@ module.exports = function(app){
 		    if(error){
 		        return console.log(error);
 		    }
+		   
 		    console.log('Mensagem Enviada: ' + info.response);
 		});
 		
