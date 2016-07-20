@@ -14,11 +14,11 @@
 
 	
 	<title>Onde Estudar =)</title>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<style type="text/css">
-${demo.css}
-		</style>
 	
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <style type="text/css">
+${demo.css}
+        </style>
 
 	<link rel="shortcut icon" href="/images/aluno.png">
 	
@@ -72,87 +72,148 @@ ${demo.css}
 
 		ga('create', 'UA-80307609-1', 'auto');
 		ga('send', 'pageview');
-	</script>
-
-<script type="text/javascript">
+		</script>
+		
+		
+	<script type="text/javascript">
 $(function () {
+    // Create the chart
     $('#container').highcharts({
         chart: {
-            type: 'column'
+            type: 'pie'
         },
         title: {
-            text: 'Notas Conceito Enade 2014'
+            text: 'TOP 10 ENEM - Média por Escola Estados: SP, RJ, DF, MG, PE'
         },
         subtitle: {
-            text: 'TOP 12 - As dozes melhores na média geral dos Cursos.'
-        },
-        xAxis: {
-            categories: [
-               'UNICAMP-SP',
-				'UFRGS-RS',
-				'UNILA-PR',
-				'UFMG-MG',
-				'UNIFESP-SP',
-				'UFSC-SC',
-				'UFRJ-RJ',
-				'UFV-MG',
-				'UFABC-SP',
-				'UFLA-MG',
-				'UNB-DF',
-				'UFSCAR-SP'
-
-				
-
-
-            ],
-            crosshair: true
-        },
-        yAxis: {
-            min: 0,
-            max: 5,
-            title: {
-                text: 'Nota Enade '
-            }
-        },
-        tooltip: {
-            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
-            footerFormat: '</table>',
-            shared: true,
-            useHTML: true
+            text: 'Click no Estado para visualizar as Escolas.'
         },
         plotOptions: {
-            column: {
-                pointPadding: 0.2,
-                borderWidth: 0
+            series: {
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}: {point.y:.1f}'
+                }
             }
         },
+
+        tooltip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+        },
         series: [{
-            name: 'Graduação',
-            data: [3.0,3.4,4.3,3.4,3.0,3.3,3.1,3.5,3.9,3.5,3.5,3.3]
-
-        }, {
-            name: 'Mestrado',
-            data: [4.9,4.9,4.0,4.9,4.6,4.8,4.8,4.7,4.3,4.7,4.6,4.5]
-
-        }, {
-            name: 'Doutorado',
-            data: [4.9,5.0,0.0,4.9,4.8,4.9,4.9,4.9,4.5,4.8,4.7,4.8]
-
-        }, {
-           name: 'IGC Contínuo',
-            data: [4.3,4.3,4.2,4.1,4.1,4.1,4.1,4.0,4.0,4.0,4.0,3.9]
-
+            name: 'Brands',
+            colorByPoint: true,
+            data: [{
+                name: 'Distrito Federal',
+               y: 19,
+                drilldown: 'Distrito Federal'
+            }, {
+                name: 'São Paulo',
+                y: 22,
+                drilldown: 'São Paulo'
+            }, {
+                name: 'Rio de Janeiro',
+                y: 21,
+                drilldown: 'Rio de Janeiro'
+            }, {
+                name: 'Minas Gerais',
+                y: 20,
+                drilldown: 'Minas Gerais'
+            }, {
+                name: 'Pernambuco',
+                y: 18,
+                drilldown: 'Pernambuco'
+            }
+            ]
+        }],
+        drilldown: {
+            series: [{
+                name: 'Distrito Federal',
+                id: 'Distrito Federal',
+                data: [
+                    ['COL OLIMPO', 697.02],
+                    ['COL OLIMPO AGUAS CLARAS', 673.97],
+                    ['COL IDEAL', 672.15],
+                    ['COL PODION', 660.39],
+                    ['CED SIGMA', 648.66],
+                    ['CED SIGMA - ASA NORTE', 647.30],
+                    ['COL GALOIS', 646.59],
+                    ['COL ALUB', 646.17],
+                    ['COC BRASILIA', 627.38],
+                    ['COL SAG. CORACAO DE MARIA', 627.03]
+                ]
+            }, {
+                name: 'São Paulo',
+                id: 'São Paulo',
+                data: [
+                    ['OBJETIVO COLEGIO INTEG.', 742.96],
+                    ['OBJETIVO INTEG. MOGI DAS CRUZES ', 718.66],
+                    ['VERTICE COLEGIO  UND. II', 710.99],
+                    ['SEB COC UNIDADE ALVARES C.', 701.70],
+                    ['ANGLO LEONARDO DA VINCI', 701.11],
+                    ['MOBILE COLEGIO', 700.84],
+                    ['SANTA CRUZ COLEGIO', 694.08],
+                    ['VILLARE COLEGIO', 691.95],
+                    ['BANDEIRANTES COLEGIO EFM', 689.40],
+                    ['OBJETIVO DO LITORAL', 688.45]
+                
+                ]
+            }, {
+                name: 'Rio de Janeiro',
+                id: 'Rio de Janeiro',
+                data: [
+                    ['PONTO DE ENSINO RJ', 720.73],
+                    ['PONTO DE ENSINO Niteroi', 711.36],
+                    ['COL DE SAO BENTO', 704.94],
+                    ['COLEGIO SANTO AGOSTINHO', 693.91],
+                    ['INSTITUTO GAYLUSSAC', 687.23],
+                    ['COLEGIO IPIRANGA', 684.78],
+                    ['COLEGIO SANTO INACIO', 684.68],
+                    ['COLEGIO SANTO AGOSTINHO - NL', 683.48],
+                    ['COLEGIO CRUZEIRO-CENTRO', 682.40],
+                    ['SISTEMA ELITE DE ENSINO', 678.49]
+                ]
+            }, {
+                name: 'Minas Gerais',
+                id: 'Minas Gerais',
+                data: [
+                    ['COLEGIO BERNOULLI ', 730.33],
+                    ['COLEGIO ELITE VALE DO ACO', 719.81],
+                    ['COLEGUIUM', 719.71],
+                    ['COLEGIO SANTO ANTONIO', 711.95],
+                    ['COLEGIO SANTO AGOSTINHO', 697.91],
+                    ['COL DE APLICACAO DA UFV', 693.32],
+                    ['COLEGIO SANTO AGOSTINHO Nova lima', 692.43],
+                    ['COLEGIO MAGNUM ', 696.91],
+                    ['COLEGIO SANTA MARCELINA', 690.68],
+                    ['COLEGIO LOYOLA', 689.55]
+                ]
+            }, {
+                name: 'Pernambuco',
+                id: 'Pernambuco',
+                data: [
+                    ['COLEGIO MOTIVO UND II', 684.97],
+                    ['COLEGIO EQUIPE', 684.08],
+                    ['COLEGIO COGNITIVO', 682.34],
+                    ['COLEGIO FAZER CRESCER ', 681.62],
+                    ['COLEGIO DE APLICACAO UFPE', 674.65],
+                    ['GRUPO GENESE DE ENSINO', 658.85],
+                    ['COLEGIO 17 DE AGOSTO', 655.45],
+                    ['ESCOLA DE APL. DO RECIFE ', 644.80],
+                    ['GRUPO GENESE DE ENSINO', 639.62],
+                    ['COLEGIO NUCLEO', 631.94]
+                ]
+            }]
         }
-        ]
     });
 });
-		</script>
-
+        </script>
+	
+	
 </head>
 
-<body>
+
 <!-- <nav class="navbar navbar-default navbar-fixed-top">
  <div class="container-fluid">
      <div class="navbar-header">
@@ -182,9 +243,9 @@ $(function () {
         <li class="dropdown active">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gráficos <span class="caret"></span></a>
           <ul class="dropdown-menu">
-           <li><a href="/graficos/candidatovaga/regiao">Candidato/Vaga por Região</a></li> 
+             <li><a href="/graficos/candidatovaga/regiao">Candidato/Vaga por Região</a></li> 
             <li role="separator" class="divider"></li>
-            <li><a href="/graficos/enem">ENEM</a></li>
+        <li><a href="/graficos/enem">ENEM</a></li>
             <li class="active"><a href="/graficos/notaconceitoenade">Notas Conceito Enade</a></li>
           </ul>
         </li>
@@ -205,8 +266,7 @@ $(function () {
 					Encontre aqui a Instituição de Ensino que você procura para estudar.
 				</p>								
 				
-				
-				
+								
 			</div>			
 		</div>	
 		<div class="row">
@@ -241,14 +301,7 @@ $(function () {
 
 		<!--BACK TO TOP -->
 		<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Voltar para o topo da página" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
-
-
-
-
-<!tseteste>
-
-
-	
+		
 	</section>
 	<!-- /Lead -->
 
@@ -290,11 +343,13 @@ $(function () {
 	});        	
 
 </script>
-
+<body>
 <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/heatmap.js"></script>
+<script src="https://code.highcharts.com/modules/treemap.js"></script>
+<div id="container"></div>
+<br><br><br><br>
 
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
 </body>
 </html>

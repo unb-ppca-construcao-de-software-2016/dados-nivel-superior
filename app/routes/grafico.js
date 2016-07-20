@@ -12,5 +12,10 @@ module.exports = function(app){
 		res.render('graficos/nota-conceito-enade', {errosValidacao: {}});
 	});
 	
+	app.get('/graficos/enem', function(req, res){
+		
+		res.render('graficos/ENEM', {errosValidacao: {}});
+	});
+	
 	
 }
