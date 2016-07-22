@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <meta charset="utf-8">
-<title>Onde estudar?</title>
+<title>Onde estudar =)</title>
 
 
 <link rel="shortcut icon" href="/images/aluno.png">
@@ -298,13 +298,35 @@ li:nth-child(odd) {
 	        <h4 class="modal-title" id="myModalIGCLabel">O que é IGC?</h4>
 	      </div>
 	      <div class="modal-body">
-	        O IGC (Índice Geral de Cursos) é um indicador de qualidade que avalia as instituições de educação superior.
-			É construído com base numa média ponderada das notas dos cursos de graduação e pós-graduação de cada instituição.
-			O IGC varia de 0 a 5, sendo os valores inferiores a 2 são considerados ruins.  
-			Para saber mais acesse o portal do <a href="http://portal.inep.gov.br/educacao-superior/indicadores/indice-geral-de-cursos-igc" target="_blank" class="link_normal">INEP</a>
+	        <p>O IGC (Índice Geral de Cursos) é um indicador de qualidade que avalia as instituições de educação superior.</p>
+			<p>É construído com base numa média ponderada das notas dos cursos de graduação e pós-graduação de cada instituição.</p>
+			<p>O IGC varia de 0 a 5, sendo os valores inferiores a 2 são considerados ruins.</p>
+			<p>Para saber mais, acesse o portal do <a href="http://portal.inep.gov.br/educacao-superior/indicadores/indice-geral-de-cursos-igc" target="_blank" class="link_normal">INEP</a></p>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- ALERTA PRECISAO COORDENADAS -->
+	<div class="modal fade" id="modalPrecisalCoordenadas" tabindex="-1" role="dialog" aria-labelledby="modalPrecisalCoordenadas">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="modalPrecisalCoordenadas">Fique sabendo!</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>As coordenadas das instituições estão com precisão a nível de <strong>município</strong>.</p>
+	        <p>Já estamos trabalhando para melhorar esta precisão e facilitar ainda mais para você! <strong>=)</strong></p>
+			<p>Para saber mais, acompanhe nosso <a href="https://www.facebook.com/ondeestudarbr/" class="btn btn-primary" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></p>
+			<p>&nbsp;</p>
+			<p> <input type="checkbox" id="id-nao-mostrar-mais"> <i>Não mostrar mais isto.</i> <i class="fa fa-hand-peace-o" aria-hidden="true"></i> </p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
 	      </div>
 	    </div>
 	  </div>
@@ -347,8 +369,61 @@ li:nth-child(odd) {
 		</div>
 	</div>
 
-	<script>
-	
+	<script>	
+
+		$(document).ready(function(){
+			
+			var show_alert = getCookie("is_show_alert_precisao_coordenadas");
+
+			console.log("show_alert: "+show_alert);
+
+		  	if(!show_alert || show_alert == "true"){
+		  		$('#modalPrecisalCoordenadas').modal({
+					keyboard: false
+				});
+		  	}			
+
+		});
+
+		function getCookie(cname) {
+		    var name = cname + "=";
+		    var ca = document.cookie.split(';');
+		    for(var i = 0; i <ca.length; i++) {
+		        var c = ca[i];
+		        while (c.charAt(0)==' ') {
+		            c = c.substring(1);
+		        }
+		        if (c.indexOf(name) == 0) {
+		            return c.substring(name.length,c.length);
+		        }
+		    }
+		    return "";
+		}
+
+		function setCookie(cname, cvalue) {
+		    		    
+		    document.cookie = cname + "=" + cvalue ;
+		}
+
+		function setCookie(cname, cvalue, exdays) {
+		    var d = new Date();
+		    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		    var expires = "expires="+d.toUTCString();
+		    document.cookie = cname + "=" + cvalue + "; " + expires;
+		}
+
+		$('#modalPrecisalCoordenadas').on('hidden.bs.modal', function (e) {
+		  	
+		  	
+		  	if ($('#id-nao-mostrar-mais').is(":checked")){				
+				
+				document.cookie = setCookie("is_show_alert_precisao_coordenadas", "false");
+			}else{
+				
+				document.cookie = setCookie("is_show_alert_precisao_coordenadas", "true");
+			}
+		})
+
 		function abrirModalIGC(){
 			$('#myModalIGC').modal({
 				  keyboard: false
@@ -399,10 +474,11 @@ li:nth-child(odd) {
 
 				var contentString = '<div id="content" style="z-index:9999;">'
 					+ '<div id="siteNotice">'
+					+ '<i class="fa fa-exclamation-circle" aria-hidden="true" style="color:red"></i> <abbr title="Estamos trabalhando para melhorar a precisão das coordenadas geográficas das instituições para você. Aguarde!!! =)">Coordenadas com precisão a nível de município</abbr>.'
 					+ '</div>'
-					+ '<h1 id="firstHeading" class="firstHeading">'+item.nome+'</h1>'
-					+ '<h3 id="firstHeading" class="firstHeading">'+item.categoria+'</h3>'
-					+ '<h3 id="firstHeading" class="firstHeading">'+item.igc+'</h3>'
+					+ '<h2 id="firstHeading" class="firstHeading">'+item.nome+'</h2>'
+					+ '<h4 id="firstHeading" class="firstHeading">'+item.categoria+'</h4>'
+					+ '<h4 id="firstHeading" class="firstHeading">'+item.igc+'</h4>'
 					+ '<div id="bodyContent">'
 					+ '<p><b>Cursos:</b></p>'
 					+ '<ul>';
@@ -487,6 +563,10 @@ li:nth-child(odd) {
 			}
 			map.fitBounds(bounds);
 		}
+
+
+
+		
 	</script>
 	<script src="https://maps.googleapis.com/maps/api/js?language=pt-BR&key=AIzaSyAaOpMtN454GfUSKhLwSduchIfLuZgEoxw&libraries=places&callback=initAutocomplete" async defer></script>
 </body>
